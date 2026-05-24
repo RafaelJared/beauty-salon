@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   CSS CUSTOM PROPERTIES
+───────────────────────────────────────── */
+:root {
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-jost: 'Jost', sans-serif;
+  --font-dm-serif: 'DM Serif Display', serif;
+
+  --color-blush:     #f9e8ec;
+  --color-petal:     #f2cdd5;
+  --color-dusty:     #e8a4b0;
+  --color-mauve:     #c07080;
+  --color-cream:     #fdf9f5;
+  --color-ivory:     #faf6f0;
+  --color-nude:      #e8ddd5;
+  --color-champagne: #f5ede3;
+  --color-charcoal:  #2c2c2c;
+  --color-mink:      #6b5b55;
+}
+
+/* ─────────────────────────────────────────
+   BASE RESETS
+───────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-jost);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-petal);
+  color: var(--color-charcoal);
+}
+
+/* ─────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-dusty);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-mauve); }
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY UTILITIES
+───────────────────────────────────────── */
+.font-display  { font-family: var(--font-cormorant); }
+.font-body     { font-family: var(--font-jost); }
+.font-accent   { font-family: var(--font-dm-serif); }
+
+.heading-hero {
+  font-family: var(--font-cormorant);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.heading-section {
+  font-family: var(--font-cormorant);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-jost);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-mauve);
+}
+
+/* ─────────────────────────────────────────
+   GRAIN TEXTURE OVERLAY
+───────────────────────────────────────── */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.3;
+}
+
+/* ─────────────────────────────────────────
+   BUTTON COMPONENTS
+───────────────────────────────────────── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-mauve text-white px-8 py-3.5
+           font-body font-normal text-sm tracking-widest uppercase
+           rounded-full transition-all duration-300
+           hover:bg-dusty hover:shadow-medium hover:-translate-y-0.5
+           active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-mauve text-mauve
+           px-8 py-3.5 font-body text-sm tracking-widest uppercase
+           rounded-full transition-all duration-300
+           hover:bg-mauve hover:text-white hover:shadow-medium hover:-translate-y-0.5;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-2 bg-[#25D366] text-white
+           px-6 py-3 font-body text-sm font-medium rounded-full
+           transition-all duration-300 shadow-medium
+           hover:bg-[#20b558] hover:-translate-y-0.5 hover:shadow-strong;
+  }
+
+  .card-service {
+    @apply bg-white rounded-3xl p-8 shadow-card border border-nude/50
+           transition-all duration-300
+           hover:shadow-medium hover:-translate-y-1 hover:border-petal;
+  }
+
+  .section-padding {
+    @apply px-5 sm:px-8 lg:px-16 xl:px-24;
+  }
+}
+
+/* ─────────────────────────────────────────
+   ANIMATED UNDERLINE LINK
+───────────────────────────────────────── */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.link-underline:hover::after { width: 100%; }
+
+/* ─────────────────────────────────────────
+   IMAGE HOVER ZOOM
+───────────────────────────────────────── */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-zoom:hover img { transform: scale(1.05); }
+
+/* ─────────────────────────────────────────
+   CALENDAR CUSTOM STYLES (react-day-picker)
+───────────────────────────────────────── */
+.rdp {
+  --rdp-cell-size:        40px !important;
+  --rdp-accent-color:     var(--color-mauve) !important;
+  --rdp-background-color: var(--color-blush) !important;
+  font-family: var(--font-jost) !important;
+}
+.rdp-day_selected { background-color: var(--color-mauve) !important; }
+
+/* ─────────────────────────────────────────
+   LOADING SKELETON
+───────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #f2cdd5 25%, #f9e8ec 50%, #f2cdd5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─────────────────────────────────────────
+   FLOATING WHATSAPP BUTTON
+───────────────────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  filter: drop-shadow(0 4px 20px rgba(37, 211, 102, 0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 6px 28px rgba(37, 211, 102, 0.5));
+}
