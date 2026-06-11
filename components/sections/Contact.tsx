@@ -5,23 +5,18 @@ import { MapPin, Phone, Mail, Clock, Instagram, MessageCircle } from "lucide-rea
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50300000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
 
 const info = [
   {
     icon: MapPin,
     label: "Dirección",
-    value: process.env.NEXT_PUBLIC_SALON_ADDRESS ?? "Tu dirección aquí",
+    value: process.env.NEXT_PUBLIC_SALON_ADDRESS ?? "https://maps.app.goo.gl/gCvgCZF69cTRCaVD7",
   },
   {
     icon: Phone,
     label: "Teléfono",
-    value: process.env.NEXT_PUBLIC_SALON_PHONE ?? "+503 0000-0000",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: process.env.NEXT_PUBLIC_SALON_EMAIL ?? "hola@lumiere.com",
+    value: process.env.NEXT_PUBLIC_SALON_PHONE ?? "+503 6474-1855",
   },
   {
     icon: Clock,
