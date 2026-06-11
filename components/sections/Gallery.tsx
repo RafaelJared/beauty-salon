@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Instagram, ExternalLink, RefreshCw } from "lucide-react";
 
-const BEHOLD_URL = "https://feeds.behold.so/0lTclGfHHy2VoS0DYe";
+const BEHOLD_URL = "https://feeds.behold.so/0lTclGfHHy2VoS0DYerg";
 
 interface IgPost {
   id:           string;
