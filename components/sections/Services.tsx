@@ -8,7 +8,7 @@ import {
   MessageCircle, ChevronRight,
 } from "lucide-react";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50300000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
 
 const services = [
   {
@@ -17,7 +17,7 @@ const services = [
     name: "Tinte de Cabello",
     description:
       "Coloración profesional con marcas premium. Mechas, balayage, tinte completo y técnicas de fantasía.",
-    price: "Desde $45",
+    price: "Desde $49.90",
     duration: "2–3 horas",
     popular: true,
     color: "from-petal to-blush",
@@ -28,7 +28,7 @@ const services = [
     name: "Alisado Permanente",
     description:
       "Alisado keratina, japonés y nanoplastia. Hasta 6 meses de duración con cabello liso y brillante.",
-    price: "Desde $80",
+    price: "Desde $39.90",
     duration: "3–4 horas",
     popular: false,
     color: "from-champagne to-nude",
@@ -39,7 +39,7 @@ const services = [
     name: "Planchado",
     description:
       "Planchado profesional con tratamiento térmico protector. Liso perfecto que dura días.",
-    price: "Desde $20",
+    price: "Desde $12.90",
     duration: "45 min",
     popular: false,
     color: "from-blush to-petal",
@@ -50,7 +50,7 @@ const services = [
     name: "Ondas Perfectas",
     description:
       "Ondas románticas, surferas o clásicas. Usamos técnica de ondas con pinza y difusor.",
-    price: "Desde $25",
+    price: "Desde $15.90",
     duration: "1 hora",
     popular: false,
     color: "from-nude to-champagne",
@@ -61,7 +61,7 @@ const services = [
     name: "Corte de Cabello",
     description:
       "Corte personalizado según tu estructura facial y estilo de vida. Incluye lavado y secado.",
-    price: "Desde $30",
+    price: "Desde $15.90",
     duration: "1 hora",
     popular: true,
     color: "from-petal to-champagne",
@@ -72,7 +72,7 @@ const services = [
     name: "Pintado de Uñas",
     description:
       "Manicure y pedicure clásico, semipermanente y gel. Diseños personalizados y nail art.",
-    price: "Desde $15",
+    price: "Desde $12.90",
     duration: "45 min–1.5h",
     popular: false,
     color: "from-blush to-nude",
@@ -105,7 +105,6 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         </div>
       )}
 
-      {/* Icon */}
       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
         <Icon size={20} className="text-mauve" />
       </div>
@@ -143,7 +142,6 @@ export default function Services() {
     <section id="servicios" className="py-24 lg:py-32 bg-cream">
       <div className="section-padding max-w-7xl mx-auto">
 
-        {/* Header */}
         <div ref={headRef} className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -176,14 +174,12 @@ export default function Services() {
           </motion.p>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <ServiceCard key={s.id} service={s} index={i} />
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
