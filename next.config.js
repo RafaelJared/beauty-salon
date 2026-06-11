@@ -5,6 +5,8 @@ const nextConfig = {
       { protocol: "https", hostname: "**.cdninstagram.com" },
       { protocol: "https", hostname: "scontent.**.cdninstagram.com" },
       { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "cdn2.behold.pictures" },
+      { protocol: "https", hostname: "**.behold.pictures" },
       { protocol: "https", hostname: "**.supabase.co" },
     ],
   },

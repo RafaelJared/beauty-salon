@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Instagram, ExternalLink, RefreshCw } from "lucide-react";
 
+const BEHOLD_URL = "https://feeds.behold.so/0lTclGfHHy2VoS0DYe";
+
 interface IgPost {
   id:           string;
   media_url:    string;
@@ -14,28 +16,36 @@ interface IgPost {
   thumbnail_url?: string;
 }
 
-// Fallback images (placeholders shown when Instagram isn't connected yet)
 const FALLBACK: IgPost[] = Array.from({ length: 9 }, (_, i) => ({
-  id:          `placeholder-${i}`,
-  media_url:   "",           // will show gradient placeholder
-  permalink:   "#",
-  caption:     "Trabajo del salón",
-  media_type:  "IMAGE",
+  id:         `placeholder-${i}`,
+  media_url:  "",
+  permalink:  "#",
+  caption:    "Trabajo del salón",
+  media_type: "IMAGE",
 }));
 
-const IG_HANDLE = process.env.NEXT_PUBLIC_SALON_IG ?? "@lumiere.beauty";
+const IG_HANDLE = "@ragasbeautysalon";
 
 export default function Gallery() {
-  const [posts, setPosts]       = useState<IgPost[]>(FALLBACK);
-  const [loading, setLoading]   = useState(true);
-  const [error, setError]       = useState(false);
+  const [posts, setPosts]     = useState<IgPost[]>(FALLBACK);
+  const [loading, setLoading] = useState(true);
+  const [error, setError]     = useState(false);
 
   useEffect(() => {
-    fetch("/api/instagram")
+    fetch(BEHOLD_URL)
       .then((r) => r.json())
       .then((data) => {
-        if (data?.posts?.length) {
-          setPosts(data.posts.slice(0, 9));
+        const raw = data?.posts ?? [];
+        if (raw.length) {
+          const mapped: IgPost[] = raw.slice(0, 9).map((p: any) => ({
+            id:           p.id,
+            media_url:    p.mediaType === "VIDEO" ? p.thumbnailUrl : p.mediaUrl,
+            permalink:    p.permalink,
+            caption:      p.prunedCaption ?? "",
+            media_type:   p.mediaType,
+            thumbnail_url: p.thumbnailUrl,
+          }));
+          setPosts(mapped);
         }
       })
       .catch(() => setError(true))
@@ -64,7 +74,6 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
             className="flex items-center justify-center gap-2 mb-4"
           >
             <div className="w-8 h-px bg-mauve" />
@@ -76,7 +85,7 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ delay: 0.1 }}
             className="heading-section text-charcoal"
           >
             Galería
@@ -86,7 +95,7 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
             className="flex items-center justify-center gap-2 mt-4"
           >
             <Instagram size={16} className="text-mauve" />
@@ -101,7 +110,7 @@ export default function Gallery() {
           </motion.div>
         </div>
 
-        {/* Loading state */}
+        {/* Loading */}
         {loading && (
           <div className="flex items-center justify-center gap-3 py-10 text-mink">
             <RefreshCw size={18} className="animate-spin text-mauve" />
@@ -133,16 +142,10 @@ export default function Gallery() {
                     sizes="(max-width: 640px) 50vw, 33vw"
                   />
                 ) : (
-                  <div
-                    className={`w-full h-full bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center`}
-                  >
-                    <span className="font-display text-mauve/50 italic text-sm">
-                      {i + 1}
-                    </span>
+                  <div className={`w-full h-full bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center`}>
+                    <span className="font-display text-mauve/50 italic text-sm">{i + 1}</span>
                   </div>
                 )}
-
-                {/* Hover overlay */}
                 <div className="absolute inset-0 bg-charcoal/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <ExternalLink size={20} className="text-white" />
                 </div>
@@ -151,14 +154,12 @@ export default function Gallery() {
           </div>
         )}
 
-        {/* Error / no connection notice */}
         {error && (
           <p className="text-center font-body text-sm text-mink/60 mt-6">
-            Las imágenes de Instagram no están disponibles en este momento.
+            Las imágenes no están disponibles en este momento.
           </p>
         )}
 
-        {/* Instagram CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
