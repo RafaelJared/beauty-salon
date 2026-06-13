@@ -6,17 +6,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "#servicios",  label: "Servicios" },
-  { href: "#nosotros",   label: "Nosotras" },
-  { href: "#galeria",    label: "Galería"   },
-  { href: "#opiniones",  label: "Opiniones" },
-  { href: "#contacto",   label: "Contacto"  },
+  { href: "#servicios", label: "Servicios"    },
+  { href: "#nosotros",  label: "Nosotras"     },
+  { href: "#galeria",   label: "Galería"      },
+  { href: "#opiniones", label: "Opiniones"    },
   { href: "#reservar",  label: "Agendar Cita" },
+  { href: "#contacto",  label: "Contacto"     },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled]   = useState(false);
-  const [menuOpen, setMenuOpen]   = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -48,26 +48,22 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-6">
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="font-body text-sm text-mink link-underline hover:text-charcoal transition-colors duration-200"
+                  className={`font-body text-sm transition-colors duration-200 link-underline ${
+                    l.label === "Agendar Cita"
+                      ? "text-mauve font-medium hover:text-dusty"
+                      : "text-mink hover:text-charcoal"
+                  }`}
                 >
                   {l.label}
                 </a>
               </li>
             ))}
           </ul>
-
-          {/* CTA */}
-          <a
-            href="#reservar"
-            className="hidden md:inline-flex btn-primary text-xs py-2.5 px-6"
-          >
-            Reservar Cita
-          </a>
 
           {/* Mobile burger */}
           <button
@@ -90,10 +86,7 @@ export default function Navbar() {
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="fixed inset-0 z-40 bg-cream flex flex-col items-center justify-center gap-8"
           >
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="absolute top-5 right-5 p-2"
-            >
+            <button onClick={() => setMenuOpen(false)} className="absolute top-5 right-5 p-2">
               <X size={24} className="text-charcoal" />
             </button>
 
@@ -105,22 +98,15 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 onClick={() => setMenuOpen(false)}
-                className="font-display text-3xl font-light text-charcoal hover:text-mauve transition-colors"
+                className={`font-display text-3xl font-light transition-colors ${
+                  l.label === "Agendar Cita"
+                    ? "text-mauve"
+                    : "text-charcoal hover:text-mauve"
+                }`}
               >
                 {l.label}
               </motion.a>
             ))}
-
-            <motion.a
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: links.length * 0.08 }}
-              href="#reservar"
-              onClick={() => setMenuOpen(false)}
-              className="btn-primary mt-4"
-            >
-              Reservar Cita
-            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
