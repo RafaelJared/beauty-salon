@@ -94,7 +94,7 @@ export default function About() {
           >
             {/* Carrusel */}
             <div className="relative mb-10">
-              <div className="w-full h-72 rounded-4xl overflow-hidden shadow-medium bg-gradient-to-br from-blush via-petal to-champagne relative">
+              <div className="w-full h-[480px] sm:h-[560px] rounded-4xl overflow-hidden shadow-medium bg-gradient-to-br from-blush via-petal to-champagne relative">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={current}
