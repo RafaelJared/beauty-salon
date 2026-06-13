@@ -13,8 +13,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <h3 className="font-display text-2xl font-light text-white mb-1">Lumière</h3>
-            <p className="eyebrow text-white/40 mb-4">Beauty Studio</p>
+            <h3 className="font-display text-2xl font-light text-white mb-1">RAGAS</h3>
+            <p className="eyebrow text-white/40 mb-4">Beauty Salon</p>
             <p className="font-body text-sm leading-relaxed text-white/50">
               Tu espacio de belleza y bienestar. Cada detalle, cuidado con amor.
             </p>
@@ -69,7 +69,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-body text-xs text-white/30">
-            © {YEAR} Lumière Beauty Studio. Todos los derechos reservados.
+            © {YEAR} RAGAS Beauty Salon. Todos los derechos reservados.
           </p>
           <p className="font-body text-xs text-white/30 flex items-center gap-1">
             Hecho con <Heart size={10} className="text-petal fill-petal" /> para bellas mujeres

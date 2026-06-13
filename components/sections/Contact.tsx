@@ -1,27 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Instagram, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
+const MAPS_URL  = "https://maps.app.goo.gl/a5wabi2ytHqdbmPT7";
+const MAPS_EMBED = "https://maps.google.com/maps?q=Col.+San+Francisco,+San+Salvador&output=embed";
 
 const info = [
   {
     icon: MapPin,
     label: "Dirección",
-    value: process.env.NEXT_PUBLIC_SALON_ADDRESS ?? "https://maps.app.goo.gl/gCvgCZF69cTRCaVD7",
+    value: "Col. San Francisco, San Salvador",
+    href: MAPS_URL,
   },
   {
     icon: Phone,
     label: "Teléfono",
-    value: process.env.NEXT_PUBLIC_SALON_PHONE ?? "+503 6474-1855",
+    value: "6474-1855",
+    href: "tel:+50364741855",
   },
   {
     icon: Clock,
     label: "Horario",
     value: "Lun – Sáb: 9:00 AM – 6:00 PM",
+    href: null,
   },
 ];
 
@@ -35,8 +40,6 @@ export default function Contact() {
     e.preventDefault();
     if (!name || !email || !message) { toast.error("Completa todos los campos."); return; }
     setLoading(true);
-
-    // Send via WhatsApp fallback
     const text = encodeURIComponent(`Hola! Soy *${name}* (${email}).\n\n${message}`);
     window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, "_blank");
     toast.success("¡Mensaje enviado por WhatsApp! ✨");
@@ -83,24 +86,33 @@ export default function Contact() {
             <div className="space-y-5 mb-10">
               {info.map((item) => {
                 const Icon = item.icon;
-                return (
-                  <div key={item.label} className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-xl bg-blush flex items-center justify-center flex-shrink-0">
+                const content = (
+                  <div key={item.label} className="flex gap-4 items-start group">
+                    <div className="w-10 h-10 rounded-xl bg-blush flex items-center justify-center flex-shrink-0 group-hover:bg-petal transition-colors">
                       <Icon size={16} className="text-mauve" />
                     </div>
                     <div>
                       <p className="font-body text-xs text-mink/60 uppercase tracking-wider mb-0.5">{item.label}</p>
-                      <p className="font-body text-sm text-charcoal">{item.value}</p>
+                      <p className={`font-body text-sm text-charcoal ${item.href ? "group-hover:text-mauve transition-colors" : ""}`}>
+                        {item.value}
+                      </p>
                     </div>
                   </div>
+                );
+                return item.href ? (
+                  <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">
+                    {content}
+                  </a>
+                ) : (
+                  <div key={item.label}>{content}</div>
                 );
               })}
             </div>
 
             {/* Social */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 mb-8">
               <a
-                href={`https://instagram.com/${(process.env.NEXT_PUBLIC_SALON_IG ?? "@lumiere.beauty").replace("@", "")}`}
+                href="https://instagram.com/ragasbeautysalon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-blush flex items-center justify-center text-mauve hover:bg-petal transition-colors"
@@ -117,18 +129,32 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* Map placeholder */}
-            <div className="mt-8 rounded-3xl overflow-hidden bg-nude/30 h-52 flex items-center justify-center border border-nude/40">
-              <div className="text-center text-mink/50">
-                <MapPin size={28} className="mx-auto mb-2 text-mauve/40" />
-                <p className="font-body text-xs">
-                  Inserta aquí tu Google Maps embed
-                </p>
-                <p className="font-body text-xs mt-1 text-mink/40">
-                  (iframe de Google Maps)
-                </p>
+            {/* Google Maps — clic abre Maps */}
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-2 rounded-3xl overflow-hidden shadow-soft border border-nude/40 hover:shadow-medium transition-shadow"
+            >
+              <div className="relative w-full h-52 bg-nude/20">
+                <iframe
+                  src="https://maps.google.com/maps?q=Col.+San+Francisco,+San+Salvador,+El+Salvador&output=embed&z=15"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, pointerEvents: "none" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación RAGAS Beauty Salon"
+                />
+                {/* Overlay para que el clic abra Maps en vez de interactuar con iframe */}
+                <div className="absolute inset-0 flex items-end justify-center pb-3">
+                  <span className="bg-white/90 backdrop-blur-sm text-mauve text-xs font-body font-medium px-4 py-1.5 rounded-full shadow-soft flex items-center gap-1.5">
+                    <MapPin size={12} /> Abrir en Google Maps
+                  </span>
+                </div>
               </div>
-            </div>
+            </a>
           </motion.div>
 
           {/* Right: Form */}
@@ -182,13 +208,8 @@ export default function Contact() {
               </button>
 
               <p className="font-body text-xs text-center text-mink/50">
-                También puedes escribirnos directamente por{" "}
-                <a
-                  href={`https://wa.me/${WA_NUMBER}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#25D366] hover:underline"
-                >
+                También puedes escribirnos por{" "}
+                <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline">
                   WhatsApp
                 </a>
               </p>
