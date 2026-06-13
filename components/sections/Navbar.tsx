@@ -11,6 +11,7 @@ const links = [
   { href: "#galeria",    label: "Galería"   },
   { href: "#opiniones",  label: "Opiniones" },
   { href: "#contacto",   label: "Contacto"  },
+  { href: "#reservar",  label: "Agendar Cita" },
 ];
 
 export default function Navbar() {
