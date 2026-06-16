@@ -166,7 +166,7 @@ export default function Reviews() {
                 />
               ))}
             </div>
-            <span className="font-display text-2xl font-medium text-charcoal">4.9</span>
+<span className="font-display text-2xl font-medium text-charcoal">5.0</span>
             <span className="font-body text-sm text-mink">(+120 reseñas)</span>
           </motion.div>
         </div>
