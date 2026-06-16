@@ -5,7 +5,7 @@ import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 
-const SALON_NAME = process.env.NEXT_PUBLIC_SALON_NAME ?? "Lumière Beauty Studio";
+const SALON_NAME = process.env.NEXT_PUBLIC_SALON_NAME ?? "RAGAS Beauty Salon";
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_SV",
-    url: "https://lumiere-beauty.vercel.app",
+    url: "https://beauty-salon-bice.vercel.app",
     siteName: SALON_NAME,
     title: `${SALON_NAME} | Salón de Belleza Premium`,
     description:
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://lumiere-beauty.vercel.app"),
+  metadataBase: new URL("https://beauty-salon-bice.vercel.app"),
 };
 
 export default function RootLayout({
