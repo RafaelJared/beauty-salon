@@ -89,7 +89,7 @@ const reviews = [
 ];
 
 const VISIBLE = 3;   // cuántas tarjetas se muestran a la vez
-const INTERVAL = 5000; // cada 5 segundos — más lento que las imágenes
+const INTERVAL = 12000; // cada 5 segundos — más lento que las imágenes
 
 function StarRating({ rating }: { rating: number }) {
   return (
