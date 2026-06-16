@@ -1,9 +1,16 @@
-import Link from "next/link";
 import { Instagram, MessageCircle, Heart } from "lucide-react";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50300000000";
-const SALON_IG  = process.env.NEXT_PUBLIC_SALON_IG  ?? "@lumiere.beauty";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
 const YEAR      = new Date().getFullYear();
+
+const links = [
+  { href: "#servicios", label: "Servicios"    },
+  { href: "#nosotros",  label: "Nosotras"     },
+  { href: "#galeria",   label: "Galería"      },
+  { href: "#opiniones", label: "Opiniones"    },
+  { href: "#reservar",  label: "Agendar Cita" },
+  { href: "#contacto",  label: "Contacto"     },
+];
 
 export default function Footer() {
   return (
@@ -24,13 +31,13 @@ export default function Footer() {
           <div>
             <p className="eyebrow text-white/50 mb-4">Navegación</p>
             <ul className="space-y-2">
-              {["Servicios", "Nosotras", "Galería", "Opiniones", "Contacto"].map((item) => (
-                <li key={item}>
+              {links.map((l) => (
+                <li key={l.href}>
                   <a
-                    href={`#${item.toLowerCase()}`}
+                    href={l.href}
                     className="font-body text-sm text-white/50 hover:text-white transition-colors link-underline"
                   >
-                    {item}
+                    {l.label}
                   </a>
                 </li>
               ))}
@@ -42,7 +49,7 @@ export default function Footer() {
             <p className="eyebrow text-white/50 mb-4">Síguenos</p>
             <div className="flex gap-3 mb-6">
               <a
-                href={`https://instagram.com/${SALON_IG.replace("@", "")}`}
+                href="https://instagram.com/ragasbeautysalon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
