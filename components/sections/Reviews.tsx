@@ -89,7 +89,7 @@ const reviews = [
 ];
 
 const VISIBLE = 3;   // cuántas tarjetas se muestran a la vez
-const INTERVAL = 9000; // cada 5 segundos — más lento que las imágenes
+const INTERVAL = 6500;
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -162,7 +162,7 @@ export default function Reviews() {
                 <Star
                   key={i}
                   size={18}
-                  className={i < 4 ? "fill-mauve text-mauve" : "fill-mauve/40 text-mauve/40"}
+                  className={i < 4 ? "fill-mauve text-mauve" : "fill-mauve/70 text-mauve/70"}
                 />
               ))}
             </div>
