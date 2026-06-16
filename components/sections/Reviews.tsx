@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const reviews = [
   {
@@ -35,7 +35,7 @@ const reviews = [
   {
     id: 4,
     name: "Camila T.",
-    service: "Ondas + Maquillaje",
+    service: "Ondas + Planchado",
     rating: 5,
     text: "Fui para un evento especial y me dejaron espectacular. Las ondas duraron todo el día y la noche. ¡Súper recomendado!",
     avatar: "C",
@@ -59,7 +59,37 @@ const reviews = [
     avatar: "D",
     date: "hace 3 días",
   },
+  {
+    id: 7,
+    name: "Gabriela R.",
+    service: "Tinte de Cabello",
+    rating: 5,
+    text: "Excelente atención desde el primer momento. Me asesoraron sobre el color ideal para mi tono de piel y quedé encantada con el resultado.",
+    avatar: "G",
+    date: "hace 5 días",
+  },
+  {
+    id: 8,
+    name: "Fernanda O.",
+    service: "Alisado Permanente",
+    rating: 5,
+    text: "Jamás había tenido el cabello tan liso y brillante. El alisado duró muchísimo y el trato fue increíble. Ya agendé mi próxima cita.",
+    avatar: "F",
+    date: "hace 2 semanas",
+  },
+  {
+    id: 9,
+    name: "Patricia C.",
+    service: "Planchado + Corte",
+    rating: 4,
+    text: "Muy buen servicio y atención. El resultado fue hermoso, definitivamente regreso. El ambiente del salón es muy agradable y relajante.",
+    avatar: "P",
+    date: "hace 1 mes",
+  },
 ];
+
+const VISIBLE = 3;   // cuántas tarjetas se muestran a la vez
+const INTERVAL = 5000; // cada 5 segundos — más lento que las imágenes
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -76,7 +106,21 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function Reviews() {
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [startIdx, setStartIdx] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setDirection(1);
+      setStartIdx((prev) => (prev + 1) % reviews.length);
+    }, INTERVAL);
+    return () => clearInterval(t);
+  }, []);
+
+  // Obtiene 3 reseñas a partir del índice actual (circular)
+  const visible = Array.from({ length: VISIBLE }, (_, i) =>
+    reviews[(startIdx + i) % reviews.length]
+  );
 
   return (
     <section id="opiniones" className="py-24 lg:py-32 bg-blush/40">
@@ -105,7 +149,7 @@ export default function Reviews() {
             Opiniones
           </motion.h2>
 
-          {/* Overall rating */}
+          {/* Rating 4.9 */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -113,52 +157,69 @@ export default function Reviews() {
             transition={{ delay: 0.2 }}
             className="flex items-center justify-center gap-3 mt-4"
           >
-            <div className="flex gap-1">
+            <div className="flex gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} size={16} className="fill-mauve text-mauve" />
+                <Star
+                  key={i}
+                  size={18}
+                  className={i < 4 ? "fill-mauve text-mauve" : "fill-mauve/40 text-mauve/40"}
+                />
               ))}
             </div>
-            <span className="font-display text-2xl font-medium text-charcoal">5.0</span>
+            <span className="font-display text-2xl font-medium text-charcoal">4.9</span>
             <span className="font-body text-sm text-mink">(+120 reseñas)</span>
           </motion.div>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.map((review, i) => (
-            <motion.div
-              key={review.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="bg-white rounded-3xl p-6 shadow-card border border-nude/40 relative overflow-hidden"
-            >
-              <Quote
-                size={40}
-                className="absolute top-4 right-4 text-petal/60"
-              />
+        {/* Cards rotativas */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden">
+          <AnimatePresence mode="popLayout">
+            {visible.map((review) => (
+              <motion.div
+                key={review.id}
+                layout
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0,  scale: 1    }}
+                exit={{    opacity: 0, y: -20, scale: 0.95 }}
+                transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="bg-white rounded-3xl p-6 shadow-card border border-nude/40 relative overflow-hidden"
+              >
+                <Quote size={40} className="absolute top-4 right-4 text-petal/60" />
 
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-mauve to-dusty flex items-center justify-center flex-shrink-0">
-                  <span className="font-display text-lg font-medium text-white">
-                    {review.avatar}
-                  </span>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-mauve to-dusty flex items-center justify-center flex-shrink-0">
+                    <span className="font-display text-lg font-medium text-white">
+                      {review.avatar}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-body font-semibold text-charcoal text-sm">{review.name}</p>
+                    <p className="font-body text-xs text-mink/70">{review.service}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-body font-semibold text-charcoal text-sm">{review.name}</p>
-                  <p className="font-body text-xs text-mink/70">{review.service}</p>
-                </div>
-              </div>
 
-              <StarRating rating={review.rating} />
+                <StarRating rating={review.rating} />
 
-              <p className="font-body text-sm text-mink leading-relaxed mt-3">
-                {review.text}
-              </p>
+                <p className="font-body text-sm text-mink leading-relaxed mt-3">
+                  {review.text}
+                </p>
 
-              <p className="font-body text-xs text-mink/50 mt-4">{review.date}</p>
-            </motion.div>
+                <p className="font-body text-xs text-mink/50 mt-4">{review.date}</p>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Indicador de progreso */}
+        <div className="flex justify-center gap-1.5 mt-10">
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setDirection(i > startIdx ? 1 : -1); setStartIdx(i); }}
+              className={`transition-all duration-500 rounded-full ${
+                i === startIdx ? "w-6 h-2 bg-mauve" : "w-2 h-2 bg-mauve/25 hover:bg-mauve/50"
+              }`}
+            />
           ))}
         </div>
       </div>
