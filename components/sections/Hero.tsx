@@ -1,12 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, ChevronLeft, ChevronRight, ArrowDown } from "lucide-react";
+import { Sparkles, ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 
-// ─── Pon tus videos en public/images/ con estos nombres ───
-// Formatos aceptados: .mp4 .webm
-// Graba vertical (9:16) como los reels de Instagram
+// ─── Pon tus videos en public/images/ ───
 const VIDEOS = [
   "/images/hero-1.mp4",
   "/images/hero-2.mp4",
@@ -14,13 +12,13 @@ const VIDEOS = [
   "/images/hero-4.mp4",
 ];
 
-const INTERVAL = 8000; // cambia cada 8 segundos
+const INTERVAL = 6000;
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40 },
   show: (delay: number) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.9, delay, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
 
@@ -36,124 +34,162 @@ export default function Hero() {
   }, [next]);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-cream">
 
-      {/* ── VIDEO DE FONDO — pantalla completa ── */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className="absolute inset-0 z-0"
-        >
-          <video
-            key={VIDEOS[current]}
-            src={VIDEOS[current]}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-      </AnimatePresence>
+      {/* Decorative blobs */}
+      <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-petal/30 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-blush/40 blur-3xl pointer-events-none" />
 
-      {/* ── OVERLAY para legibilidad ── */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-charcoal/30" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-charcoal/30 via-transparent to-transparent" />
+      <div className="relative z-10 section-padding w-full pt-28 pb-20">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-12">
 
-      {/* ── TEXTO centrado ── */}
-      <div className="relative z-20 min-h-screen flex flex-col items-center justify-center section-padding text-center px-6">
+          {/* ── Izquierda: Texto ── */}
+          <div className="order-2 lg:order-1">
+            <motion.div
+              variants={fadeUp} initial="hidden" animate="show" custom={0.1}
+              className="flex items-center gap-2 mb-6"
+            >
+              <Sparkles size={14} className="text-mauve" />
+              <span className="eyebrow">Salón de Belleza Premium</span>
+            </motion.div>
 
-        <motion.div
-          variants={fadeUp} initial="hidden" animate="show" custom={0.1}
-          className="flex items-center justify-center gap-2 mb-5"
-        >
-          <Sparkles size={14} className="text-petal" />
-          <span className="eyebrow text-petal/90">Salón de Belleza Premium</span>
-        </motion.div>
+            <motion.h1
+              variants={fadeUp} initial="hidden" animate="show" custom={0.25}
+              className="heading-hero text-charcoal mb-6"
+            >
+              Tu belleza,{" "}
+              <em className="italic text-mauve font-light">nuestro</em>
+              <br />
+              arte.
+            </motion.h1>
 
-        <motion.h1
-          variants={fadeUp} initial="hidden" animate="show" custom={0.25}
-          className="heading-hero text-white mb-6 drop-shadow-lg"
-        >
-          Tu belleza,
-          <br />
-          <em className="italic text-petal font-light">nuestro arte.</em>
-        </motion.h1>
+            <motion.p
+              variants={fadeUp} initial="hidden" animate="show" custom={0.4}
+              className="font-body text-mink text-lg leading-relaxed mb-10 max-w-md"
+            >
+              Transforma tu imagen en un espacio diseñado para ti. Tintes,
+              alisados, cortes y más — con amor y precisión en cada detalle.
+            </motion.p>
 
-        <motion.p
-          variants={fadeUp} initial="hidden" animate="show" custom={0.4}
-          className="font-body text-white/80 text-lg leading-relaxed mb-10 max-w-lg"
-        >
-          Transforma tu imagen en un espacio diseñado para ti. Tintes,
-          alisados, cortes y más — con amor y precisión en cada detalle.
-        </motion.p>
+            <motion.div
+              variants={fadeUp} initial="hidden" animate="show" custom={0.55}
+              className="flex flex-wrap gap-4"
+            >
+              <a href="#reservar" className="btn-primary">Reservar Cita</a>
+              <a href="#servicios" className="btn-outline">Ver Servicios</a>
+            </motion.div>
 
-        <motion.div
-          variants={fadeUp} initial="hidden" animate="show" custom={0.55}
-          className="flex flex-wrap gap-4 justify-center mb-16"
-        >
-          <a href="#reservar" className="btn-primary shadow-strong">
-            Reservar Cita
-          </a>
-          <a
-            href="#servicios"
-            className="inline-flex items-center gap-2 border border-white/60 text-white px-8 py-3.5 font-body text-sm tracking-widest uppercase rounded-full transition-all duration-300 hover:bg-white/20 backdrop-blur-sm"
-          >
-            Ver Servicios
-          </a>
-        </motion.div>
+            {/* Stats */}
+            <motion.div
+              variants={fadeUp} initial="hidden" animate="show" custom={0.7}
+              className="flex gap-8 mt-14 pt-10 border-t border-nude/60"
+            >
+              {[
+                { value: "500+", label: "Clientas felices"    },
+                { value: "8+",   label: "Años de experiencia" },
+                { value: "100%", label: "Satisfacción"        },
+              ].map((s) => (
+                <div key={s.label}>
+                  <p className="font-display text-3xl font-semibold text-charcoal">{s.value}</p>
+                  <p className="font-body text-xs text-mink mt-0.5 leading-tight">{s.label}</p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
 
-        {/* Stats */}
-        <motion.div
-          variants={fadeUp} initial="hidden" animate="show" custom={0.7}
-          className="flex gap-10 sm:gap-16"
-        >
-          {[
-            { value: "500+", label: "Clientas felices"      },
-            { value: "8+",   label: "Años de experiencia"   },
-            { value: "100%", label: "Satisfacción"          },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="font-display text-3xl font-semibold text-white drop-shadow">{s.value}</p>
-              <p className="font-body text-xs text-white/70 mt-0.5">{s.label}</p>
-            </div>
-          ))}
-        </motion.div>
+          {/* ── Derecha: Video vertical ── */}
+          <div className="order-1 lg:order-2 flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="relative"
+            >
+              {/* Marco del video */}
+              <div className="relative w-64 sm:w-72 h-[480px] sm:h-[540px] rounded-[3rem] overflow-hidden shadow-strong">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={current}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0"
+                  >
+                    <video
+                      key={VIDEOS[current]}
+                      src={VIDEOS[current]}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Overlay suave en los bordes */}
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent pointer-events-none" />
+
+                {/* Flechas dentro del video */}
+                <button onClick={prev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-mauve hover:bg-white transition-all shadow-soft">
+                  <ChevronLeft size={16} />
+                </button>
+                <button onClick={next}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-mauve hover:bg-white transition-all shadow-soft">
+                  <ChevronRight size={16} />
+                </button>
+
+                {/* Dots */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                  {VIDEOS.map((_, i) => (
+                    <button key={i} onClick={() => setCurrent(i)}
+                      className={`transition-all duration-300 rounded-full ${
+                        i === current ? "w-5 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/50 hover:bg-white"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Tarjeta flotante — popular */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-6 -left-8 bg-white rounded-2xl p-4 shadow-medium border border-nude/40"
+              >
+                <p className="eyebrow mb-1">Más popular</p>
+                <p className="font-display text-lg font-medium text-charcoal">Tinte + Baño</p>
+                <p className="font-body text-xs text-mink">de color</p>
+              </motion.div>
+
+              {/* Tarjeta flotante — disponible */}
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -top-4 -right-6 bg-mauve rounded-2xl p-4 shadow-medium"
+              >
+                <p className="font-body text-xs text-white/80 mb-0.5">Nuevas citas</p>
+                <p className="font-display text-lg font-medium text-white">Disponibles 🌸</p>
+              </motion.div>
+
+              {/* Sombra decorativa */}
+              <div className="absolute -z-10 top-8 left-8 w-full h-full rounded-[3rem] bg-petal/40" />
+            </motion.div>
+          </div>
+
+        </div>
       </div>
 
-      {/* ── Flechas ── */}
-      <button onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-all">
-        <ChevronLeft size={20} />
-      </button>
-      <button onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-all">
-        <ChevronRight size={20} />
-      </button>
-
-      {/* ── Dots ── */}
-      <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30 flex gap-2">
-        {VIDEOS.map((_, i) => (
-          <button key={i} onClick={() => setCurrent(i)}
-            className={`transition-all duration-300 rounded-full ${
-              i === current ? "w-6 h-2 bg-white" : "w-2 h-2 bg-white/40 hover:bg-white/70"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* ── Scroll indicator ── */}
+      {/* Scroll indicator */}
       <motion.a href="#servicios"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-mink/60 hover:text-mauve transition-colors z-10"
       >
-        <span className="font-body text-[0.6rem] tracking-widest uppercase">Explorar</span>
+        <span className="font-body text-[0.65rem] tracking-widest uppercase">Explorar</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-          <ArrowDown size={14} />
+          <ArrowDown size={16} />
         </motion.div>
       </motion.a>
     </section>
