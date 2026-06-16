@@ -89,7 +89,7 @@ const reviews = [
 ];
 
 const VISIBLE = 3;   // cuántas tarjetas se muestran a la vez
-const INTERVAL = 6000;
+const INTERVAL = 6500;
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -98,7 +98,7 @@ function StarRating({ rating }: { rating: number }) {
         <Star
           key={i}
           size={12}
-          className="fill-mauve text-mauve"
+          className={i < rating ? "fill-mauve text-mauve" : "text-nude"}
         />
       ))}
     </div>
@@ -162,11 +162,11 @@ export default function Reviews() {
                 <Star
                   key={i}
                   size={18}
-                  className={i < 4 ? "fill-mauve text-mauve" : "fill-mauve/70 text-mauve/70"}
+                  className="text-[#c07080] fill-[#c07080]"
                 />
               ))}
             </div>
-<span className="font-display text-2xl font-medium text-charcoal">5.0</span>
+            <span className="font-display text-2xl font-medium text-charcoal">4.9</span>
             <span className="font-body text-sm text-mink">(+120 reseñas)</span>
           </motion.div>
         </div>
