@@ -89,7 +89,7 @@ const reviews = [
 ];
 
 const VISIBLE = 3;   // cuántas tarjetas se muestran a la vez
-const INTERVAL = 6500;
+const INTERVAL = 6000;
 
 function StarRating({ rating }: { rating: number }) {
   return (
