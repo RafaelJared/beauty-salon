@@ -6,12 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "#servicios", label: "Servicios"    },
-  { href: "#nosotros",  label: "Nosotras"     },
-  { href: "#galeria",   label: "Galería"      },
-  { href: "#opiniones", label: "Opiniones"    },
-  { href: "#reservar",  label: "Agendar Cita" },
-  { href: "#contacto",  label: "Contacto"     },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#nosotros",  label: "Nosotras"  },
+  { href: "#galeria",   label: "Galería"   },
+  { href: "#opiniones", label: "Opiniones" },
+  { href: "#contacto",  label: "Contacto"  },
 ];
 
 export default function Navbar() {
@@ -53,26 +52,38 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className={`font-body text-sm transition-colors duration-200 link-underline ${
-                    l.label === "Agendar Cita"
-                      ? "text-mauve font-medium hover:text-dusty"
-                      : "text-mink hover:text-charcoal"
-                  }`}
+                  className="font-body text-sm transition-colors duration-200 link-underline text-mink hover:text-charcoal"
                 >
                   {l.label}
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="#reservar"
+                className="font-body text-xs font-medium tracking-widest uppercase bg-mauve text-white px-5 py-2.5 rounded-full transition-all duration-300 hover:bg-dusty hover:shadow-medium"
+              >
+                Agendar Cita
+              </a>
+            </li>
           </ul>
 
-          {/* Mobile burger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 text-charcoal"
-            aria-label="Menú"
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {/* Mobile: CTA siempre visible + burger */}
+          <div className="flex md:hidden items-center gap-2">
+            <a
+              href="#reservar"
+              className="font-body text-[0.65rem] font-medium tracking-widest uppercase bg-mauve text-white px-4 py-2 rounded-full active:scale-95 transition-transform"
+            >
+              Agendar
+            </a>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="p-2 text-charcoal"
+              aria-label="Menú"
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </nav>
       </motion.header>
 
@@ -98,15 +109,22 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 onClick={() => setMenuOpen(false)}
-                className={`font-display text-3xl font-light transition-colors ${
-                  l.label === "Agendar Cita"
-                    ? "text-mauve"
-                    : "text-charcoal hover:text-mauve"
-                }`}
+                className="font-display text-3xl font-light transition-colors text-charcoal hover:text-mauve"
               >
                 {l.label}
               </motion.a>
             ))}
+
+            <motion.a
+              href="#reservar"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: links.length * 0.08 }}
+              onClick={() => setMenuOpen(false)}
+              className="btn-primary mt-4"
+            >
+              Agendar Cita
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>

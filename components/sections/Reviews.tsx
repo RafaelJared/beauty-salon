@@ -108,14 +108,16 @@ function StarRating({ rating }: { rating: number }) {
 export default function Reviews() {
   const [startIdx, setStartIdx] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
+    if (paused) return;
     const t = setInterval(() => {
       setDirection(1);
       setStartIdx((prev) => (prev + 1) % reviews.length);
     }, INTERVAL);
     return () => clearInterval(t);
-  }, []);
+  }, [paused]);
 
   // Obtiene 3 reseñas a partir del índice actual (circular)
   const visible = Array.from({ length: VISIBLE }, (_, i) =>
@@ -171,8 +173,12 @@ export default function Reviews() {
           </motion.div>
         </div>
 
-        {/* Cards rotativas */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden">
+        {/* Cards rotativas (se pausan al pasar el mouse para poder leer) */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           <AnimatePresence mode="popLayout">
             {visible.map((review) => (
               <motion.div

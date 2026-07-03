@@ -6,7 +6,7 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { es } from "date-fns/locale";
 import { format, addDays, startOfToday } from "date-fns";
-import { User, Phone, ChevronRight, CheckCircle2, MessageCircle } from "lucide-react";
+import { User, Phone, CheckCircle2, MessageCircle, ShieldCheck } from "lucide-react";
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
 
@@ -39,6 +39,22 @@ export default function Booking() {
 
   const today = startOfToday();
   const disabledDays = [{ before: addDays(today, 1) }, { dayOfWeek: [0] }];
+
+  const phoneValid = phone.replace(/\D/g, "").length >= 8;
+
+  // Auto-avance: al seleccionar, pasa al siguiente paso (menos taps)
+  const pickService = (s: string) => {
+    setSelectedService(s);
+    setTimeout(() => setStep(2), 250);
+  };
+  const pickDate = (d: Date | undefined) => {
+    setSelectedDate(d);
+    if (d) setTimeout(() => setStep(3), 250);
+  };
+  const pickTime = (t: string) => {
+    setSelectedTime(t);
+    setTimeout(() => setStep(4), 250);
+  };
 
   const handleConfirm = useCallback(() => {
     if (!name.trim() || !phone.trim()) return;
@@ -101,12 +117,17 @@ export default function Booking() {
               const isDone = step > s;
               return (
                 <div key={label} className="flex items-center gap-1">
-                  <div className={`flex items-center gap-1.5 transition-all duration-300 ${active ? "opacity-100" : isDone ? "opacity-70" : "opacity-30"}`}>
+                  <button
+                    type="button"
+                    disabled={!isDone}
+                    onClick={() => isDone && setStep(s)}
+                    className={`flex items-center gap-1.5 transition-all duration-300 ${active ? "opacity-100" : isDone ? "opacity-70 hover:opacity-100 cursor-pointer" : "opacity-30 cursor-default"}`}
+                  >
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-body font-medium transition-colors duration-300 ${active ? "bg-mauve text-white" : isDone ? "bg-petal text-mauve" : "bg-nude text-mink"}`}>
                       {isDone ? "✓" : s}
                     </div>
                     <span className="font-body text-xs text-charcoal hidden sm:block">{label}</span>
-                  </div>
+                  </button>
                   {i < 3 && <div className="w-5 h-px bg-nude mx-1" />}
                 </div>
               );
@@ -120,10 +141,11 @@ export default function Booking() {
           {/* Step 1 */}
           {step === 1 && !done && (
             <div>
-              <h3 className="font-display text-2xl text-charcoal mb-6">¿Qué servicio deseas?</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+              <h3 className="font-display text-2xl text-charcoal mb-2">¿Qué servicio deseas?</h3>
+              <p className="font-body text-xs text-mink/70 mb-6">Toca uno para continuar</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {SERVICES_LIST.map((s) => (
-                  <button key={s} type="button" onClick={() => setSelectedService(s)}
+                  <button key={s} type="button" onClick={() => pickService(s)}
                     className={`text-left px-5 py-4 rounded-2xl border-2 font-body text-sm transition-all duration-200 ${
                       selectedService === s
                         ? "border-mauve bg-blush text-charcoal font-medium"
@@ -131,12 +153,6 @@ export default function Booking() {
                     }`}
                   >{s}</button>
                 ))}
-              </div>
-              <div className="flex justify-end">
-                <button type="button" disabled={!selectedService} onClick={() => setStep(2)}
-                  className="btn-primary disabled:opacity-40 disabled:cursor-not-allowed">
-                  Continuar <ChevronRight size={16} />
-                </button>
               </div>
             </div>
           )}
@@ -147,16 +163,12 @@ export default function Booking() {
               <h3 className="font-display text-2xl text-charcoal mb-6">Elige una fecha</h3>
               <div className="flex justify-center mb-6">
                 <DayPicker
-                  mode="single" selected={selectedDate} onSelect={setSelectedDate}
+                  mode="single" selected={selectedDate} onSelect={pickDate}
                   disabled={disabledDays} locale={es} fromDate={addDays(today, 1)}
                 />
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-start">
                 <button type="button" onClick={() => setStep(1)} className="btn-outline text-xs py-2.5 px-5">Atrás</button>
-                <button type="button" disabled={!selectedDate} onClick={() => setStep(3)}
-                  className="btn-primary disabled:opacity-40 disabled:cursor-not-allowed">
-                  Continuar <ChevronRight size={16} />
-                </button>
               </div>
             </div>
           )}
@@ -172,19 +184,15 @@ export default function Booking() {
               )}
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mb-8">
                 {TIME_SLOTS.map((t) => (
-                  <button key={t} type="button" onClick={() => setSelectedTime(t)}
+                  <button key={t} type="button" onClick={() => pickTime(t)}
                     className={`py-2.5 px-3 rounded-xl border font-body text-xs transition-all duration-200 ${
                       selectedTime === t ? "bg-mauve text-white border-mauve" : "border-nude/60 text-mink hover:border-petal"
                     }`}
                   >{t}</button>
                 ))}
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-start">
                 <button type="button" onClick={() => setStep(2)} className="btn-outline text-xs py-2.5 px-5">Atrás</button>
-                <button type="button" disabled={!selectedTime} onClick={() => setStep(4)}
-                  className="btn-primary disabled:opacity-40 disabled:cursor-not-allowed">
-                  Continuar <ChevronRight size={16} />
-                </button>
               </div>
             </div>
           )}
@@ -218,19 +226,32 @@ export default function Booking() {
                   <Phone size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-mink/60 pointer-events-none" />
                   <input
                     type="tel"
-                    autoComplete="off"
-                    placeholder="Tu número de WhatsApp"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder="Tu número de WhatsApp (ej. 7974-1855)"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="w-full pl-10 pr-4 py-3.5 rounded-2xl border border-nude/60 bg-cream font-body text-sm text-charcoal placeholder:text-mink/50 focus:outline-none focus:border-mauve focus:ring-2 focus:ring-mauve/10 transition-all"
                   />
+                  {phone.length > 0 && !phoneValid && (
+                    <p className="font-body text-xs text-mauve mt-1.5 ml-1">
+                      Ingresa un número de al menos 8 dígitos
+                    </p>
+                  )}
                 </div>
+              </div>
+
+              <div className="flex items-center gap-2 mb-6 text-mink/70">
+                <ShieldCheck size={14} className="text-mauve flex-shrink-0" />
+                <p className="font-body text-xs">
+                  Sin pago en línea — solo confirmas tu cita por WhatsApp. Tus datos no se guardan.
+                </p>
               </div>
               <div className="flex justify-between items-center">
                 <button type="button" onClick={() => setStep(3)} className="btn-outline text-xs py-2.5 px-5">Atrás</button>
                 <button
                   type="button"
-                  disabled={!name.trim() || !phone.trim()}
+                  disabled={!name.trim() || !phoneValid}
                   onClick={handleConfirm}
                   className="btn-whatsapp disabled:opacity-40 disabled:cursor-not-allowed"
                 >

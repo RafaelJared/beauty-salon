@@ -43,8 +43,8 @@ export default function Hero() {
       <div className="relative z-10 section-padding w-full pt-28 pb-20">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-12">
 
-          {/* ── Izquierda: Texto ── */}
-          <div className="order-2 lg:order-1">
+          {/* ── Izquierda: Texto (primero en móvil para que el CTA esté arriba) ── */}
+          <div className="order-1">
             <motion.div
               variants={fadeUp} initial="hidden" animate="show" custom={0.1}
               className="flex items-center gap-2 mb-6"
@@ -73,16 +73,23 @@ export default function Hero() {
 
             <motion.div
               variants={fadeUp} initial="hidden" animate="show" custom={0.55}
-              className="flex flex-wrap gap-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
-              <a href="#reservar" className="btn-primary">Reservar Cita</a>
-              <a href="#servicios" className="btn-outline">Ver Servicios</a>
+              <a href="#reservar" className="btn-primary justify-center">Reservar Cita</a>
+              <a href="#servicios" className="btn-outline justify-center">Ver Servicios</a>
             </motion.div>
+
+            <motion.p
+              variants={fadeUp} initial="hidden" animate="show" custom={0.65}
+              className="font-body text-xs text-mink/70 mt-4"
+            >
+              Confirmación por WhatsApp en minutos · Sin pago en línea
+            </motion.p>
 
             {/* Stats */}
             <motion.div
               variants={fadeUp} initial="hidden" animate="show" custom={0.7}
-              className="flex gap-8 mt-14 pt-10 border-t border-nude/60"
+              className="flex justify-between sm:justify-start gap-4 sm:gap-8 mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-nude/60"
             >
               {[
                 { value: "500+", label: "Clientas felices"    },
@@ -98,7 +105,7 @@ export default function Hero() {
           </div>
 
           {/* ── Derecha: Video vertical ── */}
-          <div className="order-1 lg:order-2 flex justify-center">
+          <div className="order-2 flex justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -185,7 +192,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.a href="#servicios"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-mink/60 hover:text-mauve transition-colors z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-mink/60 hover:text-mauve transition-colors z-10"
       >
         <span className="font-body text-[0.65rem] tracking-widest uppercase">Explorar</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
