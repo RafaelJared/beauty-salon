@@ -48,7 +48,7 @@ export default function About() {
   };
 
   return (
-    <section id="nosotros" className="py-24 lg:py-32 bg-ivory overflow-hidden">
+    <section id="nosotros" className="py-24 lg:py-32 bg-bg-alt overflow-hidden">
       <div className="section-padding max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -60,22 +60,22 @@ export default function About() {
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-px bg-mauve" />
+              <div className="w-8 h-px bg-gold" />
               <span className="eyebrow">Nuestra historia</span>
             </div>
 
-            <h2 className="heading-section text-charcoal mb-6">
+            <h2 className="heading-section text-ink mb-6">
               Más que un salón,{" "}
-              <em className="font-display italic text-mauve">una experiencia</em>
+              <em className="font-display italic text-gold">una experiencia</em>
             </h2>
 
-            <p className="font-body text-mink leading-relaxed mb-4">
+            <p className="font-body text-ink-soft leading-relaxed mb-4">
               RAGAS nació del sueño de crear un espacio donde cada mujer se
               sienta poderosa, hermosa y cuidada. Llevamos años transformando
               miradas y elevando la autoestima de cientos de clientas en
               San Salvador.
             </p>
-            <p className="font-body text-mink leading-relaxed mb-8">
+            <p className="font-body text-ink-soft leading-relaxed mb-8">
               Nuestro equipo de estilistas certificadas se capacita
               constantemente en las últimas tendencias. Aquí no existe el
               "no se puede" — solo resultados que te van a enamorar.
@@ -94,11 +94,11 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                    className="bg-white rounded-2xl p-4 shadow-card border border-nude/40"
+                    className="bg-white rounded-2xl p-4 shadow-card border border-line/40"
                   >
-                    <Icon size={18} className="text-mauve mb-2" />
-                    <p className="font-body font-semibold text-charcoal text-sm">{v.title}</p>
-                    <p className="font-body text-mink text-xs leading-relaxed mt-1">{v.desc}</p>
+                    <Icon size={18} className="text-gold mb-2" />
+                    <p className="font-body font-semibold text-ink text-sm">{v.title}</p>
+                    <p className="font-body text-ink-soft text-xs leading-relaxed mt-1">{v.desc}</p>
                   </motion.div>
                 );
               })}
@@ -114,7 +114,7 @@ export default function About() {
           >
             <div className="relative">
               {/* Marco vertical */}
-              <div className="relative w-full max-w-sm mx-auto h-[520px] sm:h-[600px] rounded-4xl overflow-hidden shadow-strong bg-gradient-to-br from-blush via-petal to-champagne">
+              <div className="relative w-full max-w-sm mx-auto h-[520px] sm:h-[600px] rounded-4xl overflow-hidden shadow-strong bg-gradient-to-br from-rose/20 via-rose/25 to-bg-alt">
 
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
@@ -137,11 +137,11 @@ export default function About() {
                       />
                     ) : (
                       /* Placeholder si la foto no existe aún */
-                      <div className="w-full h-full bg-gradient-to-br from-blush via-petal to-champagne flex flex-col items-center justify-center gap-3">
-                        <span className="font-display text-2xl text-mauve/40 italic text-center px-6">
+                      <div className="w-full h-full bg-gradient-to-br from-rose/20 via-rose/25 to-bg-alt flex flex-col items-center justify-center gap-3">
+                        <span className="font-display text-2xl text-gold/40 italic text-center px-6">
                           {PHOTOS[current].alt}
                         </span>
-                        <span className="font-body text-xs text-mink/40">
+                        <span className="font-body text-xs text-ink-soft/40">
                           Agrega tu foto: about-{current + 1}.jpg
                         </span>
                       </div>
@@ -151,11 +151,11 @@ export default function About() {
 
                 {/* Flechas */}
                 <button onClick={prev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-mauve hover:bg-white transition-all shadow-soft">
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-gold hover:bg-white transition-all shadow-soft">
                   <ChevronLeft size={16} />
                 </button>
                 <button onClick={next}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-mauve hover:bg-white transition-all shadow-soft">
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-gold hover:bg-white transition-all shadow-soft">
                   <ChevronRight size={16} />
                 </button>
 
@@ -165,7 +165,7 @@ export default function About() {
                     <button key={i}
                       onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
                       className={`transition-all duration-300 rounded-full ${
-                        i === current ? "w-5 h-1.5 bg-mauve" : "w-1.5 h-1.5 bg-white/60 hover:bg-white"
+                        i === current ? "w-5 h-1.5 bg-gold" : "w-1.5 h-1.5 bg-white/60 hover:bg-white"
                       }`}
                     />
                   ))}
@@ -173,7 +173,7 @@ export default function About() {
               </div>
 
               {/* Badge 8+ años */}
-              <div className="absolute -bottom-4 -right-2 sm:-right-6 w-20 h-20 rounded-3xl bg-mauve flex items-center justify-center shadow-medium z-20">
+              <div className="absolute -bottom-4 -right-2 sm:-right-6 w-20 h-20 rounded-3xl bg-gold flex items-center justify-center shadow-medium z-20">
                 <div className="text-center">
                   <p className="font-display text-xl font-semibold text-white">8+</p>
                   <p className="font-body text-white/80 text-[0.55rem] uppercase tracking-wider">años</p>

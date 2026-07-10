@@ -15,67 +15,73 @@ const services = [
     id: 1,
     icon: Palette,
     name: "Tinte de Cabello",
+    solves: "Resuelve: color apagado, canas, raíces marcadas",
     description:
       "Coloración profesional con marcas premium. Mechas, balayage, tinte completo y técnicas de fantasía.",
     price: "Desde $49.90",
     duration: "2–3 horas",
     popular: true,
-    color: "from-petal to-blush",
+    color: "from-rose/25 to-rose/20",
   },
   {
     id: 2,
     icon: Wind,
     name: "Alisado Permanente",
+    solves: "Resuelve: cabello encrespado, frizz, difícil de peinar",
     description:
       "Alisado keratina, japonés y nanoplastia. Hasta 6 meses de duración con cabello liso y brillante.",
     price: "Desde $39.90",
     duration: "3–4 horas",
     popular: false,
-    color: "from-champagne to-nude",
+    color: "from-bg-alt to-line",
   },
   {
     id: 3,
     icon: Sparkles,
     name: "Planchado",
+    solves: "Resuelve: falta de brillo, ondas indeseadas",
     description:
       "Planchado profesional con tratamiento térmico protector. Liso perfecto que dura días.",
     price: "Desde $12.90",
     duration: "45 min",
     popular: false,
-    color: "from-blush to-petal",
+    color: "from-rose/20 to-rose/25",
   },
   {
     id: 4,
     icon: Waves,
     name: "Ondas Perfectas",
+    solves: "Resuelve: cabello sin movimiento, look plano",
     description:
       "Ondas románticas, surferas o clásicas. Usamos técnica de ondas con pinza y difusor.",
     price: "Desde $15.90",
     duration: "1 hora",
     popular: false,
-    color: "from-nude to-champagne",
+    color: "from-line to-bg-alt",
   },
   {
     id: 5,
     icon: Scissors,
     name: "Corte de Cabello",
+    solves: "Resuelve: falta de forma, puntas dañadas",
     description:
       "Corte personalizado según tu estructura facial y estilo de vida. Incluye lavado y secado.",
     price: "Desde $15.90",
     duration: "1 hora",
     popular: true,
-    color: "from-petal to-champagne",
+    color: "from-rose/25 to-bg-alt",
   },
   {
     id: 6,
     icon: Brush,
     name: "Pintado de Uñas",
+    solves: "Resuelve: uñas descuidadas, ocasión especial",
     description:
       "Manicure y pedicure clásico, semipermanente y gel. Diseños personalizados y nail art.",
     price: "Desde $12.90",
     duration: "45 min–1.5h",
     popular: false,
-    color: "from-blush to-nude",
+    color: "from-rose/20 to-line",
   },
 ];
 
@@ -97,35 +103,35 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="card-service group flex flex-col relative overflow-hidden"
     >
-      {service.popular && (
-        <div className="absolute top-4 right-4">
-          <span className="bg-mauve text-white text-[0.6rem] font-body font-medium tracking-widest uppercase px-3 py-1 rounded-full">
+      <div className={`-m-[30px] mb-6 aspect-[16/10] bg-gradient-to-br ${service.color} flex items-center justify-center relative`}>
+        <Icon size={28} className="text-gold-deep" />
+        {service.popular && (
+          <span className="absolute top-4 right-4 bg-gold text-white text-[0.6rem] font-body font-medium tracking-widest uppercase px-3 py-1 rounded-full">
             Popular
           </span>
-        </div>
-      )}
-
-      <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-        <Icon size={20} className="text-mauve" />
+        )}
       </div>
 
-      <h3 className="font-display text-2xl font-medium text-charcoal mb-2">
+      <h3 className="font-display text-2xl font-medium text-ink mb-1">
         {service.name}
       </h3>
-      <p className="font-body text-sm text-mink leading-relaxed flex-1 mb-5">
+      <p className="font-body text-xs text-gold-deep font-medium mb-3">
+        {service.solves}
+      </p>
+      <p className="font-body text-sm text-ink-soft leading-relaxed flex-1 mb-4">
         {service.description}
       </p>
 
-      <div className="flex items-center justify-between text-xs text-mink/70 font-body mb-5 pt-4 border-t border-nude/50">
-        <span className="font-semibold text-charcoal text-sm">{service.price}</span>
-        <span>{service.duration}</span>
+      <div className="flex items-center justify-between mb-4 pt-4 border-t border-b border-line/60 py-4">
+        <span className="font-display text-2xl font-semibold text-ink">{service.price}</span>
+        <span className="font-body text-xs text-ink-soft">⏱ {service.duration}</span>
       </div>
 
       <a
         href={waLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="btn-whatsapp justify-center text-xs py-2.5"
+        className="btn-gold justify-center text-xs py-2.5 mt-auto w-full"
       >
         <MessageCircle size={15} />
         Reservar por WhatsApp
@@ -139,7 +145,7 @@ export default function Services() {
   const headInView = useInView(headRef, { once: true, margin: "-60px" });
 
   return (
-    <section id="servicios" className="py-24 lg:py-32 bg-cream">
+    <section id="servicios" className="py-24 lg:py-32 bg-bg">
       <div className="section-padding max-w-7xl mx-auto">
 
         <div ref={headRef} className="text-center mb-16">
@@ -149,16 +155,16 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center gap-2 mb-4"
           >
-            <div className="w-8 h-px bg-mauve" />
+            <div className="w-8 h-px bg-gold" />
             <span className="eyebrow">Lo que ofrecemos</span>
-            <div className="w-8 h-px bg-mauve" />
+            <div className="w-8 h-px bg-gold" />
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={headInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="heading-section text-charcoal"
+            className="heading-section text-ink"
           >
             Nuestros Servicios
           </motion.h2>
@@ -167,7 +173,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             animate={headInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="font-body text-mink mt-4 max-w-lg mx-auto leading-relaxed"
+            className="font-body text-ink-soft mt-4 max-w-lg mx-auto leading-relaxed"
           >
             Cada servicio está diseñado para realzar tu belleza natural con
             productos premium y técnicas modernas.
@@ -187,7 +193,7 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mt-14"
         >
-          <p className="font-body text-sm text-mink mb-4">
+          <p className="font-body text-sm text-ink-soft mb-4">
             ¿Tienes dudas sobre algún servicio?
           </p>
           <a

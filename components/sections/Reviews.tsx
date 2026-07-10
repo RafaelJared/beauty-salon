@@ -98,7 +98,7 @@ function StarRating({ rating }: { rating: number }) {
         <Star
           key={i}
           size={12}
-          className={i < rating ? "fill-mauve text-mauve" : "text-nude"}
+          className={i < rating ? "fill-gold text-gold" : "text-line"}
         />
       ))}
     </div>
@@ -125,7 +125,7 @@ export default function Reviews() {
   );
 
   return (
-    <section id="opiniones" className="py-24 lg:py-32 bg-blush/40">
+    <section id="opiniones" className="py-24 lg:py-32 bg-bg-alt">
       <div className="section-padding max-w-7xl mx-auto">
 
         {/* Header */}
@@ -136,9 +136,9 @@ export default function Reviews() {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-2 mb-4"
           >
-            <div className="w-8 h-px bg-mauve" />
+            <div className="w-8 h-px bg-gold" />
             <span className="eyebrow">Lo que dicen ellas</span>
-            <div className="w-8 h-px bg-mauve" />
+            <div className="w-8 h-px bg-gold" />
           </motion.div>
 
           <motion.h2
@@ -146,7 +146,7 @@ export default function Reviews() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="heading-section text-charcoal"
+            className="heading-section text-ink"
           >
             Opiniones
           </motion.h2>
@@ -164,12 +164,12 @@ export default function Reviews() {
                 <Star
                   key={i}
                   size={18}
-                  className="text-[#c07080] fill-[#c07080]"
+                  className="text-gold fill-gold"
                 />
               ))}
             </div>
-            <span className="font-display text-2xl font-medium text-charcoal">4.9</span>
-            <span className="font-body text-sm text-mink">(+120 reseñas)</span>
+            <span className="font-display text-2xl font-medium text-ink">4.9</span>
+            <span className="font-body text-sm text-ink-soft">(+120 reseñas)</span>
           </motion.div>
         </div>
 
@@ -188,29 +188,29 @@ export default function Reviews() {
                 animate={{ opacity: 1, y: 0,  scale: 1    }}
                 exit={{    opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="bg-white rounded-3xl p-6 shadow-card border border-nude/40 relative overflow-hidden"
+                className="bg-white rounded-3xl p-6 shadow-card border border-line/40 relative overflow-hidden"
               >
-                <Quote size={40} className="absolute top-4 right-4 text-petal/60" />
+                <Quote size={40} className="absolute top-4 right-4 text-rose/60" />
 
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-mauve to-dusty flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-rose flex items-center justify-center flex-shrink-0">
                     <span className="font-display text-lg font-medium text-white">
                       {review.avatar}
                     </span>
                   </div>
                   <div>
-                    <p className="font-body font-semibold text-charcoal text-sm">{review.name}</p>
-                    <p className="font-body text-xs text-mink/70">{review.service}</p>
+                    <p className="font-body font-semibold text-ink text-sm">{review.name}</p>
+                    <p className="font-body text-xs text-ink-soft/70">{review.service}</p>
                   </div>
                 </div>
 
                 <StarRating rating={review.rating} />
 
-                <p className="font-body text-sm text-mink leading-relaxed mt-3">
+                <p className="font-body text-sm text-ink-soft leading-relaxed mt-3">
                   {review.text}
                 </p>
 
-                <p className="font-body text-xs text-mink/50 mt-4">{review.date}</p>
+                <p className="font-body text-xs text-ink-soft/50 mt-4">{review.date}</p>
               </motion.div>
             ))}
           </AnimatePresence>
@@ -223,7 +223,7 @@ export default function Reviews() {
               key={i}
               onClick={() => { setDirection(i > startIdx ? 1 : -1); setStartIdx(i); }}
               className={`transition-all duration-500 rounded-full ${
-                i === startIdx ? "w-6 h-2 bg-mauve" : "w-2 h-2 bg-mauve/25 hover:bg-mauve/50"
+                i === startIdx ? "w-6 h-2 bg-gold" : "w-2 h-2 bg-gold/25 hover:bg-gold/50"
               }`}
             />
           ))}

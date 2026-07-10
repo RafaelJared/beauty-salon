@@ -31,17 +31,17 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-cream/95 backdrop-blur-md shadow-soft border-b border-nude/50"
+            ? "bg-bg/85 backdrop-blur-md shadow-[0_1px_0_var(--color-line)] py-1"
             : "bg-transparent"
         }`}
       >
         <nav className="section-padding flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex flex-col leading-none group">
-            <span className="font-display text-2xl sm:text-3xl font-light text-charcoal tracking-tight">
+            <span className="font-display text-2xl sm:text-3xl font-semibold text-ink tracking-wide">
               RAGAS
             </span>
-            <span className="eyebrow text-[0.6rem] tracking-[0.25em]">
+            <span className="eyebrow text-[0.58rem] tracking-[0.3em] -mt-0.5">
               Beauty Salon
             </span>
           </Link>
@@ -52,7 +52,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="font-body text-sm transition-colors duration-200 link-underline text-mink hover:text-charcoal"
+                  className="font-body text-sm transition-colors duration-200 link-underline text-ink-soft hover:text-ink"
                 >
                   {l.label}
                 </a>
@@ -61,7 +61,7 @@ export default function Navbar() {
             <li>
               <a
                 href="#reservar"
-                className="font-body text-xs font-medium tracking-widest uppercase bg-mauve text-white px-5 py-2.5 rounded-full transition-all duration-300 hover:bg-dusty hover:shadow-medium"
+                className="btn-primary !px-[22px] !py-[11px] !text-[0.82rem]"
               >
                 Agendar Cita
               </a>
@@ -72,13 +72,13 @@ export default function Navbar() {
           <div className="flex md:hidden items-center gap-2">
             <a
               href="#reservar"
-              className="font-body text-[0.65rem] font-medium tracking-widest uppercase bg-mauve text-white px-4 py-2 rounded-full active:scale-95 transition-transform"
+              className="font-body text-[0.7rem] font-medium bg-ink text-white px-4 py-2 rounded-full active:scale-95 transition-transform"
             >
               Agendar
             </a>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 text-charcoal"
+              className="p-2 text-ink"
               aria-label="Menú"
             >
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -95,10 +95,10 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed inset-0 z-40 bg-cream flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-bg flex flex-col items-center justify-center gap-8"
           >
             <button onClick={() => setMenuOpen(false)} className="absolute top-5 right-5 p-2">
-              <X size={24} className="text-charcoal" />
+              <X size={24} className="text-ink" />
             </button>
 
             {links.map((l, i) => (
@@ -109,7 +109,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 onClick={() => setMenuOpen(false)}
-                className="font-display text-3xl font-light transition-colors text-charcoal hover:text-mauve"
+                className="font-display text-3xl font-medium transition-colors text-ink hover:text-gold-deep"
               >
                 {l.label}
               </motion.a>

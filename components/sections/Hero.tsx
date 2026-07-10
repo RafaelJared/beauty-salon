@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 
 // ─── Pon tus videos en public/images/ ───
@@ -34,11 +34,11 @@ export default function Hero() {
   }, [next]);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-cream">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-bg">
 
       {/* Decorative blobs */}
-      <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-petal/30 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-blush/40 blur-3xl pointer-events-none" />
+      <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-rose/20 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 section-padding w-full pt-28 pb-20">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-12">
@@ -49,23 +49,26 @@ export default function Hero() {
               variants={fadeUp} initial="hidden" animate="show" custom={0.1}
               className="flex items-center gap-2 mb-6"
             >
-              <Sparkles size={14} className="text-mauve" />
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-[#4caf7d]" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#4caf7d]" />
+              </span>
               <span className="eyebrow">Salón de Belleza Premium</span>
             </motion.div>
 
             <motion.h1
               variants={fadeUp} initial="hidden" animate="show" custom={0.25}
-              className="heading-hero text-charcoal mb-6"
+              className="heading-hero text-ink mb-6"
             >
               Tu belleza,{" "}
-              <em className="italic text-mauve font-light">nuestro</em>
+              <em>nuestro</em>
               <br />
               arte.
             </motion.h1>
 
             <motion.p
               variants={fadeUp} initial="hidden" animate="show" custom={0.4}
-              className="font-body text-mink text-lg leading-relaxed mb-10 max-w-md"
+              className="font-body text-ink-soft text-lg leading-relaxed mb-10 max-w-md"
             >
               Transforma tu imagen en un espacio diseñado para ti. Tintes,
               alisados, cortes y más — con amor y precisión en cada detalle.
@@ -81,7 +84,7 @@ export default function Hero() {
 
             <motion.p
               variants={fadeUp} initial="hidden" animate="show" custom={0.65}
-              className="font-body text-xs text-mink/70 mt-4"
+              className="font-body text-xs text-ink-soft/70 mt-4"
             >
               Confirmación por WhatsApp en minutos · Sin pago en línea
             </motion.p>
@@ -89,7 +92,7 @@ export default function Hero() {
             {/* Stats */}
             <motion.div
               variants={fadeUp} initial="hidden" animate="show" custom={0.7}
-              className="flex justify-between sm:justify-start gap-4 sm:gap-8 mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-nude/60"
+              className="flex justify-between sm:justify-start gap-4 sm:gap-8 mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-line"
             >
               {[
                 { value: "500+", label: "Clientas felices"    },
@@ -97,8 +100,8 @@ export default function Hero() {
                 { value: "100%", label: "Satisfacción"        },
               ].map((s) => (
                 <div key={s.label}>
-                  <p className="font-display text-3xl font-semibold text-charcoal">{s.value}</p>
-                  <p className="font-body text-xs text-mink mt-0.5 leading-tight">{s.label}</p>
+                  <p className="font-display text-3xl font-semibold text-ink">{s.value}</p>
+                  <p className="font-body text-xs text-ink-soft mt-0.5 leading-tight">{s.label}</p>
                 </div>
               ))}
             </motion.div>
@@ -136,15 +139,15 @@ export default function Hero() {
                 </AnimatePresence>
 
                 {/* Overlay suave en los bordes */}
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent pointer-events-none" />
 
                 {/* Flechas dentro del video */}
                 <button onClick={prev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-mauve hover:bg-white transition-all shadow-soft">
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-gold-deep hover:bg-white transition-all shadow-soft">
                   <ChevronLeft size={16} />
                 </button>
                 <button onClick={next}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-mauve hover:bg-white transition-all shadow-soft">
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-gold-deep hover:bg-white transition-all shadow-soft">
                   <ChevronRight size={16} />
                 </button>
 
@@ -164,25 +167,25 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-6 -left-8 bg-white rounded-2xl p-4 shadow-medium border border-nude/40"
+                className="absolute -bottom-6 -left-8 bg-white rounded-2xl p-4 shadow-medium border border-line"
               >
                 <p className="eyebrow mb-1">Más popular</p>
-                <p className="font-display text-lg font-medium text-charcoal">Tinte + Baño</p>
-                <p className="font-body text-xs text-mink">de color</p>
+                <p className="font-display text-lg font-medium text-ink">Tinte + Baño</p>
+                <p className="font-body text-xs text-ink-soft">de color</p>
               </motion.div>
 
               {/* Tarjeta flotante — disponible */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -top-4 -right-6 bg-mauve rounded-2xl p-4 shadow-medium"
+                className="absolute -top-4 -right-6 bg-ink rounded-2xl p-4 shadow-medium"
               >
                 <p className="font-body text-xs text-white/80 mb-0.5">Nuevas citas</p>
-                <p className="font-display text-lg font-medium text-white">Disponibles 🌸</p>
+                <p className="font-display text-lg font-medium text-[#f0d9b5]">Disponibles 🌸</p>
               </motion.div>
 
               {/* Sombra decorativa */}
-              <div className="absolute -z-10 top-8 left-8 w-full h-full rounded-[3rem] bg-petal/40" />
+              <div className="absolute -z-10 top-8 left-8 w-full h-full rounded-[3rem] bg-rose/30" />
             </motion.div>
           </div>
 
@@ -192,7 +195,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.a href="#servicios"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-mink/60 hover:text-mauve transition-colors z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-ink-soft/60 hover:text-gold-deep transition-colors z-10"
       >
         <span className="font-body text-[0.65rem] tracking-widest uppercase">Explorar</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>

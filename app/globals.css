@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,19 +9,17 @@
 ───────────────────────────────────────── */
 :root {
   --font-cormorant: 'Cormorant Garamond', serif;
-  --font-jost: 'Jost', sans-serif;
-  --font-dm-serif: 'DM Serif Display', serif;
+  --font-inter: 'Inter', sans-serif;
 
-  --color-blush:     #f9e8ec;
-  --color-petal:     #f2cdd5;
-  --color-dusty:     #e8a4b0;
-  --color-mauve:     #c07080;
-  --color-cream:     #fdf9f5;
-  --color-ivory:     #faf6f0;
-  --color-nude:      #e8ddd5;
-  --color-champagne: #f5ede3;
-  --color-charcoal:  #2c2c2c;
-  --color-mink:      #6b5b55;
+  --color-bg:        #f7f3ee;
+  --color-bg-alt:    #efe8df;
+  --color-ink:       #2b2622;
+  --color-ink-soft:  #6b6259;
+  --color-line:      #e2d8cc;
+  --color-gold:      #b08d57;
+  --color-gold-deep: #8a6d3f;
+  --color-rose:      #c9a9a1;
+  --color-white:     #fffdfb;
 }
 
 /* ─────────────────────────────────────────
@@ -43,7 +41,7 @@ html {
 
 /* Accesibilidad elegante: anillo de foco visible al navegar con teclado */
 :focus-visible {
-  outline: 2px solid var(--color-mauve);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -54,73 +52,63 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-charcoal);
-  font-family: var(--font-jost);
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-inter);
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: var(--color-petal);
-  color: var(--color-charcoal);
+  background-color: var(--color-rose);
+  color: var(--color-white);
 }
 
 /* ─────────────────────────────────────────
    SCROLLBAR
 ───────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-track { background: var(--color-bg); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-dusty);
+  background: var(--color-rose);
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-mauve); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
 
 /* ─────────────────────────────────────────
    TYPOGRAPHY UTILITIES
 ───────────────────────────────────────── */
 .font-display  { font-family: var(--font-cormorant); }
-.font-body     { font-family: var(--font-jost); }
-.font-accent   { font-family: var(--font-dm-serif); }
+.font-body     { font-family: var(--font-inter); }
 
 .heading-hero {
   font-family: var(--font-cormorant);
-  font-size: clamp(2.75rem, 8vw, 7rem);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.9rem, 6vw, 5rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: .2px;
   text-wrap: balance;
+}
+.heading-hero em {
+  font-style: italic;
+  color: var(--color-gold-deep);
 }
 
 .heading-section {
   font-family: var(--font-cormorant);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 400;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 500;
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: .2px;
   text-wrap: balance;
 }
 
 .eyebrow {
-  font-family: var(--font-jost);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-family: var(--font-inter);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--color-mauve);
-}
-
-/* ─────────────────────────────────────────
-   GRAIN TEXTURE OVERLAY
-───────────────────────────────────────── */
-.grain::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.3;
+  color: var(--color-gold-deep);
 }
 
 /* ─────────────────────────────────────────
@@ -128,18 +116,25 @@ body {
 ───────────────────────────────────────── */
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-mauve text-white px-8 py-3.5
-           font-body font-normal text-sm tracking-widest uppercase
-           rounded-full transition-all duration-300
-           hover:bg-dusty hover:shadow-medium hover:-translate-y-0.5
+    @apply inline-flex items-center gap-2 bg-ink text-white px-[30px] py-4
+           font-body font-medium text-sm tracking-normal
+           rounded-full transition-all duration-300 shadow-strong
+           hover:-translate-y-0.5 hover:shadow-medium
            active:translate-y-0;
   }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2 border border-mauve text-mauve
-           px-8 py-3.5 font-body text-sm tracking-widest uppercase
+    @apply inline-flex items-center gap-2 border border-ink text-ink
+           px-[30px] py-4 font-body text-sm font-medium
            rounded-full transition-all duration-300
-           hover:bg-mauve hover:text-white hover:shadow-medium hover:-translate-y-0.5;
+           hover:bg-ink hover:text-white hover:-translate-y-0.5;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-gold text-white
+           px-[30px] py-4 font-body text-sm font-medium rounded-full
+           transition-all duration-300
+           hover:bg-gold-deep hover:-translate-y-0.5;
   }
 
   .btn-whatsapp {
@@ -150,9 +145,9 @@ body {
   }
 
   .card-service {
-    @apply bg-white rounded-3xl p-8 shadow-card border border-nude/50
+    @apply bg-white rounded-[18px] p-[30px] shadow-none border border-line
            transition-all duration-300
-           hover:shadow-medium hover:-translate-y-1 hover:border-petal;
+           hover:shadow-strong hover:-translate-y-2;
   }
 
   .section-padding {
@@ -170,12 +165,12 @@ body {
 .link-underline::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -5px;
   left: 0;
   width: 0;
   height: 1px;
-  background: currentColor;
-  transition: width 0.3s ease;
+  background: var(--color-gold);
+  transition: width 0.3s cubic-bezier(.22,.61,.36,1);
 }
 .link-underline:hover::after { width: 100%; }
 
@@ -191,24 +186,40 @@ body {
 .img-zoom:hover img { transform: scale(1.05); }
 
 /* ─────────────────────────────────────────
+   PLACEHOLDER IMAGE BLOCKS
+───────────────────────────────────────── */
+.ph-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ded2c4, #c9b7a4 55%, #b49f8a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ph-img::after {
+  content: attr(data-label);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  text-align: center;
+  padding: 12px;
+  font-weight: 600;
+}
+.ph-img.v2 { background: linear-gradient(135deg,#cbb6ae,#b8998f 55%,#a07d72); }
+.ph-img.v3 { background: linear-gradient(135deg,#c8c0b0,#a9a08c 55%,#8f8672); }
+
+/* ─────────────────────────────────────────
    CALENDAR CUSTOM STYLES (react-day-picker)
 ───────────────────────────────────────── */
 .rdp {
   --rdp-cell-size:        40px !important;
-  --rdp-accent-color:     var(--color-mauve) !important;
-  --rdp-background-color: var(--color-blush) !important;
-  font-family: var(--font-jost) !important;
+  --rdp-accent-color:     var(--color-gold) !important;
+  --rdp-background-color: var(--color-bg-alt) !important;
+  font-family: var(--font-inter) !important;
 }
-.rdp-day_selected { background-color: var(--color-mauve) !important; }
-
-/* ─────────────────────────────────────────
-   LOADING SKELETON
-───────────────────────────────────────── */
-.skeleton {
-  background: linear-gradient(90deg, #f2cdd5 25%, #f9e8ec 50%, #f2cdd5 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
+.rdp-day_selected { background-color: var(--color-gold) !important; }
 
 /* ─────────────────────────────────────────
    FLOATING WHATSAPP BUTTON

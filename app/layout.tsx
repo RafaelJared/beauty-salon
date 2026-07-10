@@ -51,7 +51,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className="bg-cream font-body antialiased">
+      <body className="bg-bg font-body antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />
@@ -61,15 +61,15 @@ export default function RootLayout({
           toastOptions={{
             style: {
               background: "#fff",
-              color: "#2c2c2c",
-              fontFamily: "var(--font-jost)",
+              color: "#2b2622",
+              fontFamily: "var(--font-inter)",
               fontSize: "14px",
               borderRadius: "50px",
-              border: "1px solid #f2cdd5",
+              border: "1px solid #e2d8cc",
               padding: "12px 20px",
-              boxShadow: "0 8px 40px rgba(192,112,128,0.15)",
+              boxShadow: "0 8px 40px rgba(52,42,32,0.15)",
             },
-            success: { iconTheme: { primary: "#c07080", secondary: "#fff" } },
+            success: { iconTheme: { primary: "#b08d57", secondary: "#fff" } },
           }}
         />
       </body>

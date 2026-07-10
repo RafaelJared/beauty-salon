@@ -48,7 +48,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="py-24 lg:py-32 bg-ivory">
+    <section id="contacto" className="py-24 lg:py-32 bg-bg-alt">
       <div className="section-padding max-w-7xl mx-auto">
 
         {/* Header */}
@@ -59,16 +59,16 @@ export default function Contact() {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-2 mb-4"
           >
-            <div className="w-8 h-px bg-mauve" />
+            <div className="w-8 h-px bg-gold" />
             <span className="eyebrow">Estamos aquí</span>
-            <div className="w-8 h-px bg-mauve" />
+            <div className="w-8 h-px bg-gold" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="heading-section text-charcoal"
+            className="heading-section text-ink"
           >
             Contáctanos
           </motion.h2>
@@ -88,12 +88,12 @@ export default function Contact() {
                 const Icon = item.icon;
                 const content = (
                   <div key={item.label} className="flex gap-4 items-start group">
-                    <div className="w-10 h-10 rounded-xl bg-blush flex items-center justify-center flex-shrink-0 group-hover:bg-petal transition-colors">
-                      <Icon size={16} className="text-mauve" />
+                    <div className="w-10 h-10 rounded-xl bg-rose/15 flex items-center justify-center flex-shrink-0 group-hover:bg-rose/25 transition-colors">
+                      <Icon size={16} className="text-gold" />
                     </div>
                     <div>
-                      <p className="font-body text-xs text-mink/60 uppercase tracking-wider mb-0.5">{item.label}</p>
-                      <p className={`font-body text-sm text-charcoal ${item.href ? "group-hover:text-mauve transition-colors" : ""}`}>
+                      <p className="font-body text-xs text-ink-soft/60 uppercase tracking-wider mb-0.5">{item.label}</p>
+                      <p className={`font-body text-sm text-ink ${item.href ? "group-hover:text-gold transition-colors" : ""}`}>
                         {item.value}
                       </p>
                     </div>
@@ -115,7 +115,7 @@ export default function Contact() {
                 href="https://instagram.com/ragasbeautysalon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-blush flex items-center justify-center text-mauve hover:bg-petal transition-colors"
+                className="w-10 h-10 rounded-full bg-rose/15 flex items-center justify-center text-gold hover:bg-rose/25 transition-colors"
               >
                 <Instagram size={16} />
               </a>
@@ -134,9 +134,9 @@ export default function Contact() {
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="block mt-2 rounded-3xl overflow-hidden shadow-soft border border-nude/40 hover:shadow-medium transition-shadow"
+              className="block mt-2 rounded-3xl overflow-hidden shadow-soft border border-line/40 hover:shadow-medium transition-shadow"
             >
-              <div className="relative w-full h-52 bg-nude/20">
+              <div className="relative w-full h-52 bg-line/20">
                 <iframe
                   src="https://maps.google.com/maps?q=Col.+San+Francisco,+San+Salvador,+El+Salvador&output=embed&z=15"
                   width="100%"
@@ -149,7 +149,7 @@ export default function Contact() {
                 />
                 {/* Overlay para que el clic abra Maps en vez de interactuar con iframe */}
                 <div className="absolute inset-0 flex items-end justify-center pb-3">
-                  <span className="bg-white/90 backdrop-blur-sm text-mauve text-xs font-body font-medium px-4 py-1.5 rounded-full shadow-soft flex items-center gap-1.5">
+                  <span className="bg-white/90 backdrop-blur-sm text-gold text-xs font-body font-medium px-4 py-1.5 rounded-full shadow-soft flex items-center gap-1.5">
                     <MapPin size={12} /> Abrir en Google Maps
                   </span>
                 </div>
@@ -164,38 +164,38 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <form onSubmit={handleSend} className="bg-white rounded-4xl p-8 shadow-card border border-nude/40 space-y-4">
-              <h3 className="font-display text-2xl text-charcoal mb-2">Envíanos un mensaje</h3>
+            <form onSubmit={handleSend} className="bg-white rounded-4xl p-8 shadow-card border border-line/40 space-y-4">
+              <h3 className="font-display text-2xl text-ink mb-2">Envíanos un mensaje</h3>
 
               <div>
-                <label className="font-body text-xs text-mink/70 uppercase tracking-wider mb-1.5 block">Nombre</label>
+                <label className="font-body text-xs text-ink-soft/70 uppercase tracking-wider mb-1.5 block">Nombre</label>
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Tu nombre"
-                  className="w-full px-4 py-3 rounded-xl border border-nude/60 bg-cream font-body text-sm focus:outline-none focus:border-mauve focus:ring-2 focus:ring-mauve/10 transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-line/60 bg-bg font-body text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all"
                 />
               </div>
 
               <div>
-                <label className="font-body text-xs text-mink/70 uppercase tracking-wider mb-1.5 block">Email</label>
+                <label className="font-body text-xs text-ink-soft/70 uppercase tracking-wider mb-1.5 block">Email</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
-                  className="w-full px-4 py-3 rounded-xl border border-nude/60 bg-cream font-body text-sm focus:outline-none focus:border-mauve focus:ring-2 focus:ring-mauve/10 transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-line/60 bg-bg font-body text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all"
                 />
               </div>
 
               <div>
-                <label className="font-body text-xs text-mink/70 uppercase tracking-wider mb-1.5 block">Mensaje</label>
+                <label className="font-body text-xs text-ink-soft/70 uppercase tracking-wider mb-1.5 block">Mensaje</label>
                 <textarea
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="¿En qué te podemos ayudar?"
-                  className="w-full px-4 py-3 rounded-xl border border-nude/60 bg-cream font-body text-sm resize-none focus:outline-none focus:border-mauve focus:ring-2 focus:ring-mauve/10 transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-line/60 bg-bg font-body text-sm resize-none focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all"
                 />
               </div>
 
@@ -207,7 +207,7 @@ export default function Contact() {
                 {loading ? "Enviando..." : "Enviar Mensaje"}
               </button>
 
-              <p className="font-body text-xs text-center text-mink/50">
+              <p className="font-body text-xs text-center text-ink-soft/50">
                 También puedes escribirnos por{" "}
                 <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline">
                   WhatsApp

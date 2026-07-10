@@ -21,18 +21,18 @@ export default function WhatsAppFloat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-16 right-0 bg-white rounded-2xl shadow-strong border border-nude/40 p-4 w-56"
+            className="absolute bottom-16 right-0 bg-white rounded-2xl shadow-strong border border-line p-4 w-56"
           >
             <button
               onClick={() => setShowTooltip(false)}
-              className="absolute top-2 right-2 text-mink/40 hover:text-mink"
+              className="absolute top-2 right-2 text-ink-soft/50 hover:text-ink-soft"
             >
               <X size={14} />
             </button>
-            <p className="font-body text-sm font-semibold text-charcoal mb-1">
+            <p className="font-body text-sm font-semibold text-ink mb-1">
               ¿Lista para brillar? ✨
             </p>
-            <p className="font-body text-xs text-mink mb-3 leading-relaxed">
+            <p className="font-body text-xs text-ink-soft mb-3 leading-relaxed">
               Reserva tu cita fácilmente por WhatsApp. Respondemos en minutos.
             </p>
             <a
