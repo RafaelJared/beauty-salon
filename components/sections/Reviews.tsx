@@ -133,7 +133,14 @@ export default function Reviews() {
               ))}
             </div>
             <span className="font-display text-2xl font-medium text-ink">4.9</span>
-            <span className="font-body text-sm text-ink-soft">(+29 reseñas)</span>
+            <a
+              href="https://www.google.com/maps/place/RAGAS+Beauty+Salon/@13.69128,-89.226611,17z/data=!3m2!1e3!4b1!4m6!3m5!1s0x8f63310cf2187955:0xa1f4ffa6681c99ad!8m2!3d13.69128!4d-89.226611!16s%2Fg%2F11hgk3__gv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-sm text-ink-soft underline decoration-gold/40 underline-offset-2 hover:text-gold transition-colors"
+            >
+              (+29 reseñas)
+            </a>
           </motion.div>
         </div>
 
