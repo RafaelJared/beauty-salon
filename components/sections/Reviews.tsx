@@ -7,21 +7,21 @@ import { useState, useEffect } from "react";
 const reviews = [
   {
     id: 1,
-    name: "Valentina M.",
-    service: "Tinte + Corte",
+    name: "Alex Rivera",
+    service: "Pedicura",
     rating: 5,
-    text: "El mejor salón de la ciudad sin duda. Llegué con el cabello muy dañado y salí con un tinte hermoso y lleno de vida. ¡Volvería mil veces!",
-    avatar: "V",
-    date: "hace 2 semanas",
+    text: "Excelente servicio, el personal muy atento y amable estoy muy satisfecho!! Visítenlo!!!",
+    avatar: "A",
+    date: "hace 3 meses",
   },
   {
     id: 2,
-    name: "Isabella R.",
+    name: "Melida L.",
     service: "Alisado Keratina",
     rating: 5,
-    text: "Llevaba años buscando un buen alisado y finalmente lo encontré. El resultado fue increíble, cabello súper liso y sedoso. Duró 5 meses perfectamente.",
-    avatar: "I",
-    date: "hace 1 mes",
+    text: "Excelente servicio, un personal bien profesional y atento!. Instalaciones limpias y estoy encantada con el trabajo que me realizaron, definitivamente los vuelvo a visitar.",
+    avatar: "M",
+    date: "hace 3 meses",
   },
   {
     id: 3,
@@ -34,12 +34,12 @@ const reviews = [
   },
   {
     id: 4,
-    name: "Camila T.",
-    service: "Ondas + Planchado",
+    name: "Rocio Gallardo",
+    service: "manicura",
     rating: 5,
-    text: "Fui para un evento especial y me dejaron espectacular. Las ondas duraron todo el día y la noche. ¡Súper recomendado!",
-    avatar: "C",
-    date: "hace 1 semana",
+    text: "Me encantó el servicio, las uñas quedaron perfectas 😍✨ súper prolijas, brillantes y justo como las quería, 100% recomendado 💖💅",
+    avatar: "R",
+    date: "hace 8 meses",
   },
   {
     id: 5,
@@ -49,43 +49,7 @@ const reviews = [
     text: "La estilista entendió perfectamente lo que quería. Corte preciso, explicó todo el proceso y quedé feliz con el resultado.",
     avatar: "A",
     date: "hace 2 meses",
-  },
-  {
-    id: 6,
-    name: "Daniela F.",
-    service: "Balayage",
-    rating: 5,
-    text: "Mi balayage quedó de revista. Me mostraron el proceso paso a paso y el resultado fue exactamente lo que había guardado en mis inspiraciones.",
-    avatar: "D",
-    date: "hace 3 días",
-  },
-  {
-    id: 7,
-    name: "Gabriela R.",
-    service: "Tinte de Cabello",
-    rating: 5,
-    text: "Excelente atención desde el primer momento. Me asesoraron sobre el color ideal para mi tono de piel y quedé encantada con el resultado.",
-    avatar: "G",
-    date: "hace 5 días",
-  },
-  {
-    id: 8,
-    name: "Fernanda O.",
-    service: "Alisado Permanente",
-    rating: 5,
-    text: "Jamás había tenido el cabello tan liso y brillante. El alisado duró muchísimo y el trato fue increíble. Ya agendé mi próxima cita.",
-    avatar: "F",
-    date: "hace 2 semanas",
-  },
-  {
-    id: 9,
-    name: "Patricia C.",
-    service: "Planchado + Corte",
-    rating: 4,
-    text: "Muy buen servicio y atención. El resultado fue hermoso, definitivamente regreso. El ambiente del salón es muy agradable y relajante.",
-    avatar: "P",
-    date: "hace 1 mes",
-  },
+  }
 ];
 
 const VISIBLE = 3;   // cuántas tarjetas se muestran a la vez
@@ -169,7 +133,7 @@ export default function Reviews() {
               ))}
             </div>
             <span className="font-display text-2xl font-medium text-ink">4.9</span>
-            <span className="font-body text-sm text-ink-soft">(+120 reseñas)</span>
+            <span className="font-body text-sm text-ink-soft">(+29 reseñas)</span>
           </motion.div>
         </div>
 
