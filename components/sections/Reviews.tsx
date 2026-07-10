@@ -151,12 +151,20 @@ export default function Reviews() {
             transition={{ delay: 0.35 }}
             className="flex items-center justify-center gap-1.5 mt-1.5"
           >
+            <a
+              href="https://www.google.com/maps/place/RAGAS+Beauty+Salon/@13.69128,-89.226611,17z/data=!3m2!1e3!4b1!4m6!3m5!1s0x8f63310cf2187955:0xa1f4ffa6681c99ad!8m2!3d13.69128!4d-89.226611!16s%2Fg%2F11hgk3__gv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body italic text-xs text-ink-soft/60 hover:text-gold transition-colors"
+            >
+              Ver más opiniones de clientas satisfechas
+            </a>
             <svg
               width="26"
               height="26"
               viewBox="0 0 26 26"
               fill="none"
-              className="text-gold/60 -rotate-[10deg]"
+              className="text-gold/60 -scale-x-100 -rotate-[10deg]"
             >
               <path
                 d="M4 22C4 14 8 5 17 3"
@@ -174,14 +182,6 @@ export default function Reviews() {
                 fill="none"
               />
             </svg>
-            <a
-              href="https://www.google.com/maps/place/RAGAS+Beauty+Salon/@13.69128,-89.226611,17z/data=!3m2!1e3!4b1!4m6!3m5!1s0x8f63310cf2187955:0xa1f4ffa6681c99ad!8m2!3d13.69128!4d-89.226611!16s%2Fg%2F11hgk3__gv"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body italic text-xs text-ink-soft/60 hover:text-gold transition-colors"
-            >
-              Ver más opiniones de clientes reales
-            </a>
           </motion.div>
         </div>
 
