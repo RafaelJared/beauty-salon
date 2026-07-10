@@ -95,7 +95,7 @@ export default function Hero() {
               className="flex justify-between sm:justify-start gap-4 sm:gap-8 mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-line"
             >
               {[
-                { value: "500+", label: "Clientas felices"    },
+                { value: "10000+", label: "Clientas felices"    },
                 { value: "8+",   label: "Años de experiencia" },
                 { value: "100%", label: "Satisfacción"        },
               ].map((s) => (
