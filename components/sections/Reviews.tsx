@@ -152,21 +152,21 @@ export default function Reviews() {
             className="flex items-center justify-center gap-1.5 mt-1.5"
           >
             <svg
-              width="30"
-              height="20"
-              viewBox="0 0 30 20"
+              width="26"
+              height="26"
+              viewBox="0 0 26 26"
               fill="none"
-              className="text-gold/60 -scale-x-100 rotate-[8deg]"
+              className="text-gold/60 -rotate-[10deg]"
             >
               <path
-                d="M2 3C7 2 16 2.5 22 8C24 10 25 12 25.5 14"
+                d="M4 22C4 14 8 5 17 3"
                 stroke="currentColor"
                 strokeWidth="1.3"
                 strokeLinecap="round"
                 fill="none"
               />
               <path
-                d="M20.5 12.5C22 13 24 13.8 25.7 14.3C25.9 12.4 26.3 10.3 27 8.5"
+                d="M11.5 4.2C13 3.5 15.2 3 17 3C16.7 4.7 16.7 6.9 17.1 8.5"
                 stroke="currentColor"
                 strokeWidth="1.3"
                 strokeLinecap="round"
