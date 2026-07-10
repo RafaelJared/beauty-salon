@@ -2,7 +2,7 @@ import { Star, Crown, Sparkle, Gem, BadgeCheck } from "lucide-react";
 
 const items = [
   { icon: Star,       label: "4.9 de calificación"      },
-  { icon: Crown,      label: "500+ clientas atendidas"  },
+  { icon: Crown,      label: "10,000+ clientas atendidas"  },
   { icon: Sparkle,    label: "8 años de experiencia"    },
   { icon: Gem,        label: "Productos profesionales"  },
   { icon: BadgeCheck, label: "Especialistas certificadas" },
