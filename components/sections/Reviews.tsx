@@ -142,6 +142,47 @@ export default function Reviews() {
               (+29 reseñas)
             </a>
           </motion.div>
+
+          {/* Flecha dibujada a mano señalando el link de reseñas */}
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.35 }}
+            className="flex items-center justify-center gap-1.5 mt-1.5"
+          >
+            <svg
+              width="30"
+              height="20"
+              viewBox="0 0 30 20"
+              fill="none"
+              className="text-gold/60 -scale-x-100 rotate-[8deg]"
+            >
+              <path
+                d="M2 3C7 2 16 2.5 22 8C24 10 25 12 25.5 14"
+                stroke="currentColor"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M20.5 12.5C22 13 24 13.8 25.7 14.3C25.9 12.4 26.3 10.3 27 8.5"
+                stroke="currentColor"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg>
+            <a
+              href="https://www.google.com/maps/place/RAGAS+Beauty+Salon/@13.69128,-89.226611,17z/data=!3m2!1e3!4b1!4m6!3m5!1s0x8f63310cf2187955:0xa1f4ffa6681c99ad!8m2!3d13.69128!4d-89.226611!16s%2Fg%2F11hgk3__gv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body italic text-xs text-ink-soft/60 hover:text-gold transition-colors"
+            >
+              Ver más opiniones de clientes reales
+            </a>
+          </motion.div>
         </div>
 
         {/* Cards rotativas (se pausan al pasar el mouse para poder leer) */}
