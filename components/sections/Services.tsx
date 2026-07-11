@@ -53,7 +53,7 @@ const services = [
     name: "Secado/Planchado",
     solves: "Resuelve: falta de brillo, ondas indeseadas",
     description:
-      "Planchado profesional con tratamiento térmico protector. Liso perfecto que dura días.",
+      "Secado o Planchado profesional, con finalizado profesional y duradero, incluye protector térmico y gotas selladoras.",
     price: "Desde $12.90",
     duration: "45 min",
     popular: false,
@@ -101,7 +101,7 @@ const services = [
     name: "Rituales SOS",
     solves: "Resuelve: cabello sumamente dañado y sin vida",
     description:
-      "Nutrición, reparación e hidratación profunda. Incluye estilizado para cabellos muy tratados quimicamente.",
+      "Nutrición, reparación, hidratación o fortalecimiento para cabellos dañados y/o procedados químicamente, incluye estilizado.",
     price: "Desde $45.90",
     duration: "1–2 horas",
     popular: false,
