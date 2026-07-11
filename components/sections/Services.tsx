@@ -101,7 +101,7 @@ const services = [
     name: "Rituales SOS",
     solves: "Resuelve: cabello sumamente dañado y sin vida",
     description:
-      "Nutrición, reparación e hidratación profunda. Incluye estilizado para cabellos muy tratados.",
+      "Nutrición, reparación e hidratación profunda. Incluye estilizado para cabellos muy tratados quimicamente.",
     price: "Desde $45.90",
     duration: "1–2 horas",
     popular: false,
