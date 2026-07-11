@@ -17,7 +17,7 @@ const services = [
     name: "Tinte de Cabello",
     solves: "Resuelve: color apagado, canas, raíces marcadas",
     description:
-      "Coloración profesional con marcas premium. Mechas, balayage, tinte completo y técnicas de fantasía.",
+      "Coloración profesional con marcas premium. Tinte completo y técnicas de fantasía.",
     price: "Desde $49.90",
     duration: "2–3 horas",
     popular: true,
@@ -30,15 +30,15 @@ const services = [
     solves: "Resuelve: cabello encrespado, frizz, difícil de peinar",
     description:
       "Alisado keratina, japonés y nanoplastia. Hasta 6 meses de duración con cabello liso y brillante.",
-    price: "Desde $39.90",
+    price: "Desde $89.90",
     duration: "3–4 horas",
-    popular: false,
+    popular: true,
     color: "from-bg-alt to-line",
   },
   {
     id: 3,
     icon: Sparkles,
-    name: "Planchado",
+    name: "Secado/Planchado",
     solves: "Resuelve: falta de brillo, ondas indeseadas",
     description:
       "Planchado profesional con tratamiento térmico protector. Liso perfecto que dura días.",
@@ -65,19 +65,19 @@ const services = [
     name: "Corte de Cabello",
     solves: "Resuelve: falta de forma, puntas dañadas",
     description:
-      "Corte personalizado según tu estructura facial y estilo de vida. Incluye lavado y secado.",
+      "Corte personalizado según tu estructura facial y estilo de vida.",
     price: "Desde $15.90",
     duration: "1 hora",
-    popular: true,
+    popular: false,
     color: "from-rose/25 to-bg-alt",
   },
   {
     id: 6,
     icon: Brush,
-    name: "Pintado de Uñas",
+    name: "Esmaltado de Uñas",
     solves: "Resuelve: uñas descuidadas, ocasión especial",
     description:
-      "Manicure y pedicure clásico, semipermanente y gel. Diseños personalizados y nail art.",
+      "Manicure express o pedicure express de gel permanente. Diseños personalizados y nail art.",
     price: "Desde $12.90",
     duration: "45 min–1.5h",
     popular: false,
