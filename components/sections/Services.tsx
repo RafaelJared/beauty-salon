@@ -48,6 +48,18 @@ const services = [
     color: "from-rose/25 to-line",
   },
   {
+    id: 8,
+    icon: Droplets,
+    name: "Rituales SOS",
+    solves: "Resuelve: cabello sumamente dañado y sin vida",
+    description:
+      "Nutrición, reparación, hidratación o fortalecimiento para cabellos dañados y/o procedados químicamente, incluye estilizado.",
+    price: "Desde $45.90",
+    duration: "1–2 horas",
+    popular: false,
+    color: "from-line to-rose/20",
+  },
+  {
     id: 3,
     icon: Sparkles,
     name: "Secado/Planchado",
@@ -72,18 +84,6 @@ const services = [
     color: "from-line to-bg-alt",
   },
   {
-    id: 5,
-    icon: Scissors,
-    name: "Corte de Cabello",
-    solves: "Resuelve: falta de forma, puntas dañadas",
-    description:
-      "Corte personalizado según tu estructura facial y estilo de vida.",
-    price: "Desde $15.90",
-    duration: "1 hora",
-    popular: false,
-    color: "from-rose/25 to-bg-alt",
-  },
-  {
     id: 6,
     icon: Brush,
     name: "Esmaltado de Uñas",
@@ -96,16 +96,16 @@ const services = [
     color: "from-rose/20 to-line",
   },
   {
-    id: 8,
-    icon: Droplets,
-    name: "Rituales SOS",
-    solves: "Resuelve: cabello sumamente dañado y sin vida",
+    id: 5,
+    icon: Scissors,
+    name: "Corte de Cabello",
+    solves: "Resuelve: falta de forma, puntas dañadas",
     description:
-      "Nutrición, reparación, hidratación o fortalecimiento para cabellos dañados y/o procedados químicamente, incluye estilizado.",
-    price: "Desde $45.90",
-    duration: "1–2 horas",
+      "Corte personalizado según tu estructura facial y estilo de vida.",
+    price: "Desde $15.90",
+    duration: "1 hora",
     popular: false,
-    color: "from-line to-rose/20",
+    color: "from-rose/25 to-bg-alt",
   },
 ];
 
