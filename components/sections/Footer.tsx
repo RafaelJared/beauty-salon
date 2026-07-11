@@ -1,4 +1,12 @@
-import { Instagram, MessageCircle, Heart } from "lucide-react";
+import { Instagram, MessageCircle, Facebook, Heart } from "lucide-react";
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" width={16} height={16} fill="currentColor" className={className}>
+      <path d="M16.6 5.82a4.28 4.28 0 0 1-1.05-2.82h-3.1v12.3a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.6a5.7 5.7 0 0 0-.8-.06A5.69 5.69 0 0 0 4.2 15.2a5.69 5.69 0 0 0 5.69 5.69 5.69 5.69 0 0 0 5.69-5.69V9.01a7.35 7.35 0 0 0 4.28 1.37V7.28a4.28 4.28 0 0 1-3.26-1.46z" />
+    </svg>
+  );
+}
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
 const YEAR      = new Date().getFullYear();
@@ -63,6 +71,22 @@ export default function Footer() {
                 className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] transition-colors"
               >
                 <MessageCircle size={16} className="text-[#25D366]" />
+              </a>
+              <a
+                href="https://www.facebook.com/Ragassalon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] transition-colors"
+              >
+                <Facebook size={16} className="text-white/70" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@ragasbeautysalon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white hover:border-white hover:text-black transition-colors"
+              >
+                <TikTokIcon className="text-white/70" />
               </a>
             </div>
             <a
