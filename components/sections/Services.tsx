@@ -5,7 +5,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Scissors, Sparkles, Wind, Waves, Palette, Brush,
-  MessageCircle, ChevronRight,
+  Highlighter, Droplets, MessageCircle, ChevronRight,
 } from "lucide-react";
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
@@ -34,6 +34,18 @@ const services = [
     duration: "3–4 horas",
     popular: true,
     color: "from-bg-alt to-line",
+  },
+  {
+    id: 7,
+    icon: Highlighter,
+    name: "Diseño de Color",
+    solves: "Resuelve: color plano, sin dimensión ni luz",
+    description:
+      "Mechas tradicionales, baby lights y balayage. Iluminación y dimensión personalizada.",
+    price: "Desde $99.90",
+    duration: "3–4 horas",
+    popular: true,
+    color: "from-rose/25 to-line",
   },
   {
     id: 3,
@@ -82,6 +94,18 @@ const services = [
     duration: "45 min–1.5h",
     popular: false,
     color: "from-rose/20 to-line",
+  },
+  {
+    id: 8,
+    icon: Droplets,
+    name: "Rituales SOS",
+    solves: "Resuelve: cabello sumamente dañado y sin vida",
+    description:
+      "Nutrición, reparación e hidratación profunda. Incluye estilizado para cabellos muy tratados.",
+    price: "Desde $45.90",
+    duration: "1–2 horas",
+    popular: false,
+    color: "from-line to-rose/20",
   },
 ];
 
@@ -196,14 +220,24 @@ export default function Services() {
           <p className="font-body text-sm text-ink-soft mb-4">
             ¿Tienes dudas sobre algún servicio?
           </p>
-          <a
-            href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola! Quisiera más información sobre sus servicios 💅")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline inline-flex items-center gap-2"
-          >
-            Consultar ahora <ChevronRight size={16} />
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola! Quisiera más información sobre sus servicios 💅")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline inline-flex items-center gap-2"
+            >
+              Consultar ahora <ChevronRight size={16} />
+            </a>
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola! Me gustaría preguntar por más servicios que ofrecen ✨")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline inline-flex items-center gap-2"
+            >
+              Preguntar por más servicios <ChevronRight size={16} />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
