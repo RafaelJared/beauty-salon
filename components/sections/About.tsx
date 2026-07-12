@@ -8,7 +8,7 @@ import { useState, useEffect, useCallback } from "react";
 const values = [
   { icon: Heart,  title: "Pasión",      desc: "Amamos lo que hacemos y se nota en cada resultado." },
   { icon: Award,  title: "Calidad",     desc: "Solo usamos productos premium de las mejores marcas." },
-  { icon: Users,  title: "Confianza",   desc: "Más de 10,000 clientas confían en nosotras cada mes."  },
+  { icon: Users,  title: "Confianza",   desc: "Más de 200 clientas confían en nosotras cada mes."  },
   { icon: Clock,  title: "Puntualidad", desc: "Respetamos tu tiempo. Citas puntuales, siempre."    },
 ];
 

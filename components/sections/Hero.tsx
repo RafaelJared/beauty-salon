@@ -71,7 +71,7 @@ export default function Hero() {
               className="font-body text-ink-soft text-lg leading-relaxed mb-10 max-w-md"
             >
               Transforma tu imagen en un espacio diseñado para ti. Tintes,
-              alisados, cortes y más — con amor y precisión en cada detalle.
+              alisados, cortes y más. Con amor y precisión en cada detalle.
             </motion.p>
 
             <motion.div
