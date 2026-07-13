@@ -246,7 +246,7 @@ export default function Reviews() {
                       <p className="font-body text-xs text-ink-soft/70">{review.service}</p>
                       {isPopularService(review.service) && (
                         <span className="bg-gold text-white text-[0.55rem] font-body font-medium tracking-widest uppercase px-2 py-0.5 rounded-full leading-none">
-                          Cliente que eligió servicio popular
+                          Servicio popular
                         </span>
                       )}
                     </div>
