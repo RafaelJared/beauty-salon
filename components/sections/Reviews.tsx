@@ -50,7 +50,7 @@ const reviews = [
     avatar: "A",
     date: "hace 2 meses",
   }
-  {
+  ,{
   id: 6,
   name: "Valeria M.",
   service: "Tinte de Cabello",
