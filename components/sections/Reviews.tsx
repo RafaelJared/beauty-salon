@@ -12,21 +12,21 @@ const reviews = [
     rating: 5,
     text: "Excelente servicio, el personal muy atento y amable estoy muy satisfecho!! Visítenlo!!!",
     avatar: "A",
-    date: "hace 3 meses",
+    date: "hace 3 semanas",
   },
   {
     id: 2,
     name: "Melida L.",
-    service: "Alisado Keratina",
+    service: "Alisado Permanente",
     rating: 5,
     text: "Excelente servicio, un personal bien profesional y atento!. Instalaciones limpias y estoy encantada con el trabajo que me realizaron, definitivamente los vuelvo a visitar.",
     avatar: "M",
-    date: "hace 3 meses",
+    date: "hace 3 días",
   },
   {
     id: 3,
     name: "Sofía L.",
-    service: "Pintado de Uñas",
+    service: "Esmaltado de uñas",
     rating: 5,
     text: "Vine por primera vez y quedé enamorada del lugar. Muy limpio, el ambiente es precioso y el nail art que me hicieron fue exactamente lo que pedí.",
     avatar: "S",
@@ -35,7 +35,7 @@ const reviews = [
   {
     id: 4,
     name: "Rocio Gallardo",
-    service: "manicura",
+    service: "Esmaltado de Uñas",
     rating: 5,
     text: "Me encantó el servicio, las uñas quedaron perfectas 😍✨ súper prolijas, brillantes y justo como las quería, 100% recomendado 💖💅",
     avatar: "R",
@@ -50,6 +50,24 @@ const reviews = [
     avatar: "A",
     date: "hace 2 meses",
   }
+  {
+  id: 6,
+  name: "Valeria M.",
+  service: "Tinte de Cabello",
+  rating: 5,
+  text: "Quedé fascinada con el color de mi cabello. Me asesoraron para elegir el tono ideal y el resultado superó mis expectativas. Mi cabello quedó brillante, suave y con un acabado muy natural.",
+  avatar: "V",
+  date: "hace 1 día",
+},
+{
+  id: 7,
+  name: "Daniela C.",
+  service: "Diseño de Color",
+  rating: 5,
+  text: "El diseño de color quedó espectacular. Hicieron un degradado hermoso y cuidaron mucho la salud de mi cabello durante todo el proceso. Sin duda volveré y lo recomiendo al 100%.",
+  avatar: "D",
+  date: "hace 2 semanas",
+}
 ];
 
 const VISIBLE = 3;   // cuántas tarjetas se muestran a la vez

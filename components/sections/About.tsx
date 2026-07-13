@@ -78,7 +78,7 @@ export default function About() {
             <p className="font-body text-ink-soft leading-relaxed mb-8">
               Nuestro equipo de estilistas certificadas se capacita
               constantemente en las últimas tendencias. Aquí no existe el
-              "no se puede" — solo resultados que te van a enamorar.
+              "no se puede" solo resultados que te van a enamorar.
             </p>
 
             <a href="#reservar" className="btn-primary">Reserva tu cita</a>
