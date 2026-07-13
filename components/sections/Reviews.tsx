@@ -70,6 +70,18 @@ const reviews = [
 }
 ];
 
+// Servicios destacados como "Popular" (deben coincidir con los de Services.tsx)
+const POPULAR_SERVICES = [
+  "Tinte de Cabello",
+  "Alisado Permanente",
+  "Diseño de Color",
+];
+
+const isPopularService = (service: string) =>
+  POPULAR_SERVICES.some(
+    (s) => s.toLowerCase() === service.trim().toLowerCase()
+  );
+
 const VISIBLE = 3;   // cuántas tarjetas se muestran a la vez
 const INTERVAL = 6500;
 
@@ -230,7 +242,14 @@ export default function Reviews() {
                   </div>
                   <div>
                     <p className="font-body font-semibold text-ink text-sm">{review.name}</p>
-                    <p className="font-body text-xs text-ink-soft/70">{review.service}</p>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <p className="font-body text-xs text-ink-soft/70">{review.service}</p>
+                      {isPopularService(review.service) && (
+                        <span className="bg-gold text-white text-[0.55rem] font-body font-medium tracking-widest uppercase px-2 py-0.5 rounded-full leading-none">
+                          Cliente que eligió servicio popular
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
 
