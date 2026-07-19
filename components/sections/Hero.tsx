@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 // ─── Pon tus videos en public/images/ ───
 // label: nombre del servicio que se muestra en la burbuja flotante (opcional)
@@ -14,6 +14,8 @@ const VIDEOS = [
   { src: "/images/hero-3.mp4" },
   { src: "/images/hero-4.mp4" },
 ];
+
+const INTERVAL = 7000;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -28,6 +30,11 @@ export default function Hero() {
 
   const next = useCallback(() => setCurrent((c) => (c + 1) % VIDEOS.length), []);
   const prev = useCallback(() => setCurrent((c) => (c - 1 + VIDEOS.length) % VIDEOS.length), []);
+
+  useEffect(() => {
+    const t = setInterval(next, INTERVAL);
+    return () => clearInterval(t);
+  }, [next, current]);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-bg">
@@ -127,8 +134,8 @@ export default function Hero() {
                       src={VIDEOS[current].src}
                       autoPlay
                       muted
+                      loop
                       playsInline
-                      onEnded={next}
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
