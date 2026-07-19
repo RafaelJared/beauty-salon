@@ -2,17 +2,18 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 // ─── Pon tus videos en public/images/ ───
+// label: nombre del servicio que se muestra en la burbuja flotante (opcional)
 const VIDEOS = [
-  "/images/hero-1.mp4",
-  "/images/hero-2.mp4",
-  "/images/hero-3.mp4",
-  "/images/hero-4.mp4",
+  { src: "/images/alisado-permanente.mp4", label: "Alisado permanente" },
+  { src: "/images/ondas.mp4",              label: "Ondas" },
+  { src: "/images/hero-1.mp4" },
+  { src: "/images/hero-2.mp4" },
+  { src: "/images/hero-3.mp4" },
+  { src: "/images/hero-4.mp4" },
 ];
-
-const INTERVAL = 6000;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -27,11 +28,6 @@ export default function Hero() {
 
   const next = useCallback(() => setCurrent((c) => (c + 1) % VIDEOS.length), []);
   const prev = useCallback(() => setCurrent((c) => (c - 1 + VIDEOS.length) % VIDEOS.length), []);
-
-  useEffect(() => {
-    const t = setInterval(next, INTERVAL);
-    return () => clearInterval(t);
-  }, [next]);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-bg">
@@ -127,12 +123,12 @@ export default function Hero() {
                     className="absolute inset-0"
                   >
                     <video
-                      key={VIDEOS[current]}
-                      src={VIDEOS[current]}
+                      key={VIDEOS[current].src}
+                      src={VIDEOS[current].src}
                       autoPlay
                       muted
-                      loop
                       playsInline
+                      onEnded={next}
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
@@ -183,6 +179,29 @@ export default function Hero() {
                 <p className="font-body text-xs text-white/80 mb-0.5">Nuevas citas</p>
                 <p className="font-display text-lg font-medium text-[#f0d9b5]">Disponibles 🌸</p>
               </motion.div>
+
+              {/* Burbuja flotante — servicio del video actual */}
+              <AnimatePresence mode="wait">
+                {VIDEOS[current].label && (
+                  <motion.div
+                    key={VIDEOS[current].label}
+                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                    animate={{ opacity: 1, y: [0, -8, 0], scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                    transition={{
+                      opacity: { duration: 0.4 },
+                      scale: { duration: 0.4 },
+                      y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                    }}
+                    className="absolute -bottom-4 -right-6 z-20 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-medium border border-line"
+                  >
+                    <p className="eyebrow mb-0.5">Se hizo</p>
+                    <p className="font-display text-lg font-medium text-ink whitespace-nowrap">
+                      {VIDEOS[current].label} ✨
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Sombra decorativa */}
               <div className="absolute -z-10 top-8 left-8 w-full h-full rounded-[3rem] bg-rose/30" />
