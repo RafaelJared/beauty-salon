@@ -8,7 +8,7 @@ import { useState, useCallback } from "react";
 // label: nombre del servicio que se muestra en la burbuja flotante (opcional)
 const VIDEOS = [
   { src: "/images/alisado-permanente.mp4", label: "Alisado permanente" },
-  { src: "/images/ondas.mp4",              label: "Ondas" },
+  { src: "/images/ondas.mp4",              label: "Ondas perfectas" },
   { src: "/images/hero-1.mp4" },
   { src: "/images/hero-2.mp4" },
   { src: "/images/hero-3.mp4" },
