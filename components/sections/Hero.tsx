@@ -16,6 +16,7 @@ const VIDEOS = [
 ];
 
 const INTERVAL = 7000;
+const SLIDE_INTERVALS: Record<number, number> = { 4: 10000 }; // slide 5 (index 4) queda 10s
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -32,8 +33,9 @@ export default function Hero() {
   const prev = useCallback(() => setCurrent((c) => (c - 1 + VIDEOS.length) % VIDEOS.length), []);
 
   useEffect(() => {
-    const t = setInterval(next, INTERVAL);
-    return () => clearInterval(t);
+    const delay = SLIDE_INTERVALS[current] ?? INTERVAL;
+    const t = setTimeout(next, delay);
+    return () => clearTimeout(t);
   }, [next, current]);
 
   return (
