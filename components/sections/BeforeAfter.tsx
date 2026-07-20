@@ -15,6 +15,8 @@ const CASES = [
     eyebrow: "Caso 02 · Corte & Color",
     title: "Un cambio que le devolvió la seguridad",
     text: "Quería reinventarse. Rediseñamos su forma y color desde cero, pensando en su rostro y su rutina. El resultado: un look moderno que mantiene fácil en casa.",
+    videoAntes: "/images/caso-02-antes.mp4",
+    videoDespues: "/images/caso-02-despues.mp4",
   },
   {
     label: "Tratamiento",
@@ -72,12 +74,31 @@ export default function BeforeAfter() {
             onTouchStart={(e) => setFromClientX(e.touches[0].clientX)}
             onTouchMove={(e) => setFromClientX(e.touches[0].clientX)}
           >
-            <div className="absolute inset-0 ph-img" data-label="[ ANTES ]" />
-            <div
-              className="absolute inset-0 ph-img v2"
-              data-label="[ DESPUÉS ]"
-              style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
-            />
+            {CASES[active].videoAntes ? (
+              <video
+                key={CASES[active].videoAntes}
+                src={CASES[active].videoAntes}
+                autoPlay muted loop playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <div className="absolute inset-0 ph-img" data-label="[ ANTES ]" />
+            )}
+            {CASES[active].videoDespues ? (
+              <video
+                key={CASES[active].videoDespues}
+                src={CASES[active].videoDespues}
+                autoPlay muted loop playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
+              />
+            ) : (
+              <div
+                className="absolute inset-0 ph-img v2"
+                data-label="[ DESPUÉS ]"
+                style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
+              />
+            )}
             <span className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-[0.68rem] tracking-wider uppercase font-semibold bg-ink/70 text-white backdrop-blur-sm">
               Antes
             </span>
