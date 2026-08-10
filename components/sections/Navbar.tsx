@@ -39,10 +39,10 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex flex-col leading-none group">
             <span className="font-display text-2xl sm:text-3xl font-semibold text-ink tracking-wide">
-              RAGAS
+              AURÉ
             </span>
             <span className="eyebrow text-[0.58rem] tracking-[0.3em] -mt-0.5">
-              Beauty Salon
+              Beauty Lounge
             </span>
           </Link>
 

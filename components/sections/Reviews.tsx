@@ -164,7 +164,7 @@ export default function Reviews() {
             </div>
             <span className="font-display text-2xl font-medium text-ink">4.9</span>
             <a
-              href="https://www.google.com/maps/place/RAGAS+Beauty+Salon/@13.69128,-89.226611,17z/data=!3m2!1e3!4b1!4m6!3m5!1s0x8f63310cf2187955:0xa1f4ffa6681c99ad!8m2!3d13.69128!4d-89.226611!16s%2Fg%2F11hgk3__gv"
+              href="https://www.google.com/maps/place/AUR%C3%89+Beauty+Lounge/@13.6967777,-89.2858204,14z/data=!4m10!1m2!2m1!1sAUR%C3%89+Beauty+Lounge+San+Salvador!3m6!1s0x8f63310cf2187955:0xa1f4ffa6681c99ad!8m2!3d13.6967777!4d-89.2497715!15sCiBBVVLDiSBCZWF1dHkgTG91bmdlIFNhbiBTYWx2YWRvcloiIiBhdXLDqSBiZWF1dHkgbG91bmdlIHNhbiBzYWx2YWRvcpIBDGJlYXV0eV9zYWxvbpoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQyNXNVMDFIT1d0U1YzQjJVMVU1VkZkSFduVk5SVGxRVkVkMFZsWnJSUkFC4AEA-gEECAAQSg!16s%2Fg%2F11hgk3__gv?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-sm text-ink-soft underline decoration-gold/40 underline-offset-2 hover:text-gold transition-colors"
@@ -182,7 +182,7 @@ export default function Reviews() {
             className="flex items-center justify-center gap-1.5 mt-1.5"
           >
             <a
-              href="https://www.google.com/maps/place/RAGAS+Beauty+Salon/@13.69128,-89.226611,17z/data=!3m2!1e3!4b1!4m6!3m5!1s0x8f63310cf2187955:0xa1f4ffa6681c99ad!8m2!3d13.69128!4d-89.226611!16s%2Fg%2F11hgk3__gv"
+              href="https://www.google.com/maps/place/AUR%C3%89+Beauty+Lounge/@13.6967777,-89.2858204,14z/data=!4m10!1m2!2m1!1sAUR%C3%89+Beauty+Lounge+San+Salvador!3m6!1s0x8f63310cf2187955:0xa1f4ffa6681c99ad!8m2!3d13.6967777!4d-89.2497715!15sCiBBVVLDiSBCZWF1dHkgTG91bmdlIFNhbiBTYWx2YWRvcloiIiBhdXLDqSBiZWF1dHkgbG91bmdlIHNhbiBzYWx2YWRvcpIBDGJlYXV0eV9zYWxvbpoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQyNXNVMDFIT1d0U1YzQjJVMVU1VkZkSFduVk5SVGxRVkVkMFZsWnJSUkFC4AEA-gEECAAQSg!16s%2Fg%2F11hgk3__gv?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body italic text-xs text-ink-soft/60 hover:text-gold transition-colors"
