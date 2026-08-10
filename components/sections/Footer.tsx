@@ -28,8 +28,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <h3 className="font-display text-2xl font-semibold text-white mb-1">RAGAS</h3>
-            <p className="eyebrow text-gold/70 mb-4">Beauty Salon</p>
+            <h3 className="font-display text-2xl font-semibold text-white mb-1">AURÉ</h3>
+            <p className="eyebrow text-gold/70 mb-4">Beauty Lounge</p>
             <p className="font-body text-sm leading-relaxed text-white/50">
               Tu espacio de belleza y bienestar. Cada detalle, cuidado con amor.
             </p>
@@ -57,7 +57,7 @@ export default function Footer() {
             <p className="eyebrow text-white/50 mb-4">Síguenos</p>
             <div className="flex gap-3 mb-6">
               <a
-                href="https://instagram.com/ragasbeautysalon"
+                href="https://www.instagram.com/aure_beautylounge/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:border-gold transition-colors"
@@ -73,7 +73,7 @@ export default function Footer() {
                 <MessageCircle size={16} className="text-[#25D366]" />
               </a>
               <a
-                href="https://www.facebook.com/Ragassalon"
+                href="https://www.facebook.com/AureBeautyLounge"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] transition-colors"
@@ -81,7 +81,7 @@ export default function Footer() {
                 <Facebook size={16} className="text-white/70" />
               </a>
               <a
-                href="https://www.tiktok.com/@ragasbeautysalon"
+                href="https://www.tiktok.com/@aure_beautylounge"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white hover:border-white hover:text-black transition-colors"
@@ -100,7 +100,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-body text-xs text-white/30">
-            © {YEAR} RAGAS Beauty Salon. Todos los derechos reservados.
+            © {YEAR} AURÉ Beauty Lounge. Todos los derechos reservados.
           </p>
           <p className="font-body text-xs text-white/30 flex items-center gap-1">
             Hecho con <Heart size={10} className="text-rose fill-rose" /> para bellas mujeres

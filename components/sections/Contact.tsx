@@ -6,21 +6,21 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
-const MAPS_URL  = "https://maps.app.goo.gl/a5wabi2ytHqdbmPT7";
-const MAPS_EMBED = "https://maps.google.com/maps?q=Col.+San+Francisco,+San+Salvador&output=embed";
+const MAPS_URL  = "https://maps.app.goo.gl/K9UoyzmkgKNiQYK5A";
+const MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.187091882905!2d-89.2040596847229!3d13.68918819029509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f633a7c6e7b8e9b%3A0x5c6e7b8e9b5c6e7b!2sRAGAS%20Beauty%20Salon!5e0!3m2!1sen!2ssv!4v1697041234567";
 
 const info = [
   {
     icon: MapPin,
     label: "Dirección",
-    value: "Col. San Francisco, San Salvador",
+    value: "Ave. Jerusalén, calle la mascota, sunset plaza #14, San Salvador, El Salvador",
     href: MAPS_URL,
   },
   {
     icon: Phone,
     label: "Teléfono",
-    value: "6474-1855",
-    href: "tel:+50364741855",
+    value: " 2228-5580",
+    href: "tel:+50322285580",
   },
   {
     icon: Clock,
@@ -112,7 +112,7 @@ export default function Contact() {
             {/* Social */}
             <div className="flex gap-3 mb-8">
               <a
-                href="https://instagram.com/ragasbeautysalon"
+                href="https://www.instagram.com/aure_beautylounge/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-rose/15 flex items-center justify-center text-gold hover:bg-rose/25 transition-colors"
@@ -138,14 +138,14 @@ export default function Contact() {
             >
               <div className="relative w-full h-52 bg-line/20">
                 <iframe
-                  src="https://maps.google.com/maps?q=Col.+San+Francisco,+San+Salvador,+El+Salvador&output=embed&z=15"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.081640833281!2d-89.25226892342536!3d13.6970359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f63310cf2187955%3A0xa1f4ffa6681c99ad!2sAUR%C3%89%20Beauty%20Lounge!5e1!3m2!1ses-419!2ssv!4v1786322749933!5m2!1ses-419!2ssv"
                   width="100%"
                   height="100%"
                   style={{ border: 0, pointerEvents: "none" }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Ubicación RAGAS Beauty Salon"
+                  title="Ubicación AURÉ Beauty Lounge"
                 />
                 {/* Overlay para que el clic abra Maps en vez de interactuar con iframe */}
                 <div className="absolute inset-0 flex items-end justify-center pb-3">

@@ -24,7 +24,7 @@ const FALLBACK: IgPost[] = Array.from({ length: 9 }, (_, i) => ({
   media_type: "IMAGE",
 }));
 
-const IG_HANDLE = "@ragasbeautysalon";
+const IG_HANDLE = "@aure_beautylounge";
 
 export default function Gallery() {
   const [posts, setPosts]     = useState<IgPost[]>(FALLBACK);
