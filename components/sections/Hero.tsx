@@ -57,10 +57,10 @@ export default function Hero() {
               variants={fadeUp} initial="hidden" animate="show" custom={0.25}
               className="heading-hero text-ink mb-6"
             >
-              Tu belleza,{" "}
-              <em>nuestro</em>
+              Tu ritual,{" "}
+              <em>tu</em>
               <br />
-              arte.
+              momento.
             </motion.h1>
 
             <motion.p

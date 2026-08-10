@@ -8,7 +8,7 @@ import { es } from "date-fns/locale";
 import { format, addDays, startOfToday } from "date-fns";
 import { User, Phone, CheckCircle2, MessageCircle, ShieldCheck } from "lucide-react";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50322285580";
 
 const SERVICES_LIST = [
   "Tinte de Cabello",

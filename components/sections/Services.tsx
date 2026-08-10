@@ -66,7 +66,7 @@ const services = [
     solves: "Resuelve: falta de brillo, ondas indeseadas",
     description:
       "Secado o Planchado profesional, con finalizado profesional y duradero, incluye protector térmico y gotas selladoras.",
-    price: "Desde $12.90",
+    price: "Desde $15.90",
     duration: "45 min",
     popular: false,
     color: "from-rose/20 to-rose/25",
@@ -90,7 +90,7 @@ const services = [
     solves: "Resuelve: uñas descuidadas, ocasión especial",
     description:
       "Manicure express o pedicure express de gel permanente. Diseños personalizados y nail art.",
-    price: "Desde $12.90",
+    price: "$15.90",
     duration: "45 min–1.5h",
     popular: false,
     color: "from-rose/20 to-line",
@@ -102,7 +102,7 @@ const services = [
     solves: "Resuelve: falta de forma, puntas dañadas",
     description:
       "Corte personalizado según tu estructura facial y estilo de vida.",
-    price: "Desde $15.90",
+    price: "$15.90",
     duration: "1 hora",
     popular: false,
     color: "from-rose/25 to-bg-alt",
