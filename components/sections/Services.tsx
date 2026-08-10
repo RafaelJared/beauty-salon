@@ -8,7 +8,7 @@ import {
   Highlighter, Droplets, MessageCircle, ChevronRight,
 } from "lucide-react";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50322285580";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
 
 const services = [
   {
