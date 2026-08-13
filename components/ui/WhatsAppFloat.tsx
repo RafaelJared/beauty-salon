@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
 import { useState } from "react";
 
-const WA_NUMBER  = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50300000000";
+const WA_NUMBER  = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
 const WA_MESSAGE = process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE
   ?? "Hola! Me gustaría reservar una cita 💅";
 

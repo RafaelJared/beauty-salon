@@ -19,8 +19,8 @@ const info = [
   {
     icon: Phone,
     label: "Teléfono",
-    value: " 2228-5580",
-    href: "tel:+50322285580",
+    value: " 6974 1855",
+    href: "tel:+50369741855",
   },
   {
     icon: Clock,

@@ -18,6 +18,7 @@ const links = [
   { href: "#opiniones", label: "Opiniones"    },
   { href: "#reservar",  label: "Agendar Cita" },
   { href: "#contacto",  label: "Contacto"     },
+
 ];
 
 export default function Footer() {
