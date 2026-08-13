@@ -70,7 +70,7 @@ export default function About() {
             </h2>
 
             <p className="font-body text-ink-soft leading-relaxed mb-4">
-              AURE nació del sueño de crear un espacio donde cada mujer se
+              AURÉ nació del sueño de crear un espacio donde cada mujer se
               sienta poderosa, hermosa y cuidada. Llevamos años transformando
               miradas y elevando la autoestima de cientos de clientas en
               San Salvador.
