@@ -8,7 +8,14 @@ import { useState, useCallback, useEffect } from "react";
 // type: "image" | "video"
 // label: nombre del servicio que se muestra en la burbuja flotante (opcional)
 // duration: solo para imágenes, cuántos ms se muestra antes de pasar al siguiente slide
-const SLIDES = [
+type Slide = {
+  type: "image" | "video";
+  src: string;
+  label?: string;
+  duration?: number;
+};
+
+const SLIDES: Slide[] = [
   { type: "image", src: "/images/hero-0.jpg",              label: "Bienvenida", duration: 4000 },
   { type: "video", src: "/images/alisado-permanente.mp4",  label: "Alisado permanente" },
   { type: "video", src: "/images/ondas.mp4",                label: "Ondas perfectas" },
@@ -16,7 +23,7 @@ const SLIDES = [
   { type: "video", src: "/images/hero-2.mp4" },
   { type: "video", src: "/images/hero-3.mp4" },
   { type: "video", src: "/images/hero-4.mp4" },
-] as const;
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -37,7 +44,7 @@ export default function Hero() {
   // Si el slide actual es una imagen, avanzamos solos después de "duration" ms
   useEffect(() => {
     if (slide.type === "image") {
-      const ms = "duration" in slide && slide.duration ? slide.duration : 4000;
+      const ms = slide.duration ?? 4000;
       const timer = setTimeout(next, ms);
       return () => clearTimeout(timer);
     }
