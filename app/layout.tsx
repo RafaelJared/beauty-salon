@@ -5,7 +5,7 @@ import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 
-const SALON_NAME = process.env.NEXT_PUBLIC_SALON_NAME ?? "RAGAS Beauty Salon";
+const SALON_NAME = process.env.NEXT_PUBLIC_SALON_NAME ?? "AURÉ Beauty Salon";
 
 export const metadata: Metadata = {
   title: {
