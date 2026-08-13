@@ -7,7 +7,7 @@ const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
 
 export default function FinalCTA() {
   const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-    "Hola! Me gustaría reservar una cita en RAGAS 💅"
+    "Hola! Me gustaría reservar una cita en AURÉ 💅"
   )}`;
 
   return (
