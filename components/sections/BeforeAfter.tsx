@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 const CASES = [
   {
     label: "Corte & color",
-    eyebrow: "Caso 02 · Corte & Color",
+    eyebrow: " · Corte & Color",
     title: "Un cambio que le devolvió la seguridad",
     text: "Quería reinventarse. Rediseñamos su forma y color desde cero, pensando en su rostro y su rutina. El resultado: un look moderno que mantiene fácil en casa.",
     videoAntes: "/images/caso-02-antes.mp4",
