@@ -33,7 +33,7 @@ const info = [
   },
   {
     icon: Phone,
-    label: "Teléfono",
+    label: "WhatsApp",
     value: "6974 1855",
     href: `https://wa.me/${WA_NUMBER}`,
   },
