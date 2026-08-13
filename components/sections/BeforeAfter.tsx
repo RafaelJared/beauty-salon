@@ -5,24 +5,12 @@ import { useRef, useState } from "react";
 
 const CASES = [
   {
-    label: "Balayage",
-    eyebrow: "Caso 01 · Balayage",
-    title: "De un tono apagado a luz viva",
-    text: "Llegó buscando un cambio sin dañar su cabello. Diseñamos un balayage a medida que iluminó su rostro y respetó su fibra capilar. Salió sintiéndose ella misma, pero mejor.",
-  },
-  {
     label: "Corte & color",
     eyebrow: "Caso 02 · Corte & Color",
     title: "Un cambio que le devolvió la seguridad",
     text: "Quería reinventarse. Rediseñamos su forma y color desde cero, pensando en su rostro y su rutina. El resultado: un look moderno que mantiene fácil en casa.",
     videoAntes: "/images/caso-02-antes.mp4",
     videoDespues: "/images/caso-02-despues.mp4",
-  },
-  {
-    label: "Tratamiento",
-    eyebrow: "Caso 03 · Tratamiento",
-    title: "Del daño al brillo de espejo",
-    text: "Cabello castigado por procesos anteriores. Con un tratamiento profesional de reconstrucción, recuperó suavidad, brillo y manejabilidad desde la primera sesión.",
   },
 ];
 
