@@ -2,18 +2,21 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
-// ─── Pon tus videos en public/images/ ───
+// ─── Pon tus videos e imágenes en public/images/ ───
+// type: "image" | "video"
 // label: nombre del servicio que se muestra en la burbuja flotante (opcional)
-const VIDEOS = [
-  { src: "/images/alisado-permanente.mp4", label: "Alisado permanente" },
-  { src: "/images/ondas.mp4",              label: "Ondas perfectas" },
-  { src: "/images/hero-1.mp4" },
-  { src: "/images/hero-2.mp4" },
-  { src: "/images/hero-3.mp4" },
-  { src: "/images/hero-4.mp4" },
-];
+// duration: solo para imágenes, cuántos ms se muestra antes de pasar al siguiente slide
+const SLIDES = [
+  { type: "image", src: "/images/hero-0.jpg",              label: "Bienvenida", duration: 4000 },
+  { type: "video", src: "/images/alisado-permanente.mp4",  label: "Alisado permanente" },
+  { type: "video", src: "/images/ondas.mp4",                label: "Ondas perfectas" },
+  { type: "video", src: "/images/hero-1.mp4" },
+  { type: "video", src: "/images/hero-2.mp4" },
+  { type: "video", src: "/images/hero-3.mp4" },
+  { type: "video", src: "/images/hero-4.mp4" },
+] as const;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -26,9 +29,19 @@ const fadeUp = {
 export default function Hero() {
   const [current, setCurrent] = useState(0);
 
-  const next = useCallback(() => setCurrent((c) => (c + 1) % VIDEOS.length), []);
-  const prev = useCallback(() => setCurrent((c) => (c - 1 + VIDEOS.length) % VIDEOS.length), []);
+  const next = useCallback(() => setCurrent((c) => (c + 1) % SLIDES.length), []);
+  const prev = useCallback(() => setCurrent((c) => (c - 1 + SLIDES.length) % SLIDES.length), []);
 
+  const slide = SLIDES[current];
+
+  // Si el slide actual es una imagen, avanzamos solos después de "duration" ms
+  useEffect(() => {
+    if (slide.type === "image") {
+      const ms = "duration" in slide && slide.duration ? slide.duration : 4000;
+      const timer = setTimeout(next, ms);
+      return () => clearTimeout(timer);
+    }
+  }, [current, slide, next]);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-bg">
@@ -104,7 +117,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Derecha: Video vertical ── */}
+          {/* ── Derecha: Video/Imagen vertical ── */}
           <div className="order-2 flex justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -112,7 +125,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="relative"
             >
-              {/* Marco del video */}
+              {/* Marco del video/imagen */}
               <div className="relative w-64 sm:w-72 h-[480px] sm:h-[540px] rounded-[3rem] overflow-hidden shadow-strong">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -123,15 +136,23 @@ export default function Hero() {
                     transition={{ duration: 0.8 }}
                     className="absolute inset-0"
                   >
-                    <video
-                      key={VIDEOS[current].src}
-                      src={VIDEOS[current].src}
-                      autoPlay
-                      muted
-                      playsInline
-                      onEnded={next}
-                      className="w-full h-full object-cover"
-                    />
+                    {slide.type === "image" ? (
+                      <img
+                        src={slide.src}
+                        alt={slide.label ?? ""}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <video
+                        key={slide.src}
+                        src={slide.src}
+                        autoPlay
+                        muted
+                        playsInline
+                        onEnded={next}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </motion.div>
                 </AnimatePresence>
 
@@ -150,7 +171,7 @@ export default function Hero() {
 
                 {/* Dots */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                  {VIDEOS.map((_, i) => (
+                  {SLIDES.map((_, i) => (
                     <button key={i} onClick={() => setCurrent(i)}
                       className={`transition-all duration-300 rounded-full ${
                         i === current ? "w-5 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/50 hover:bg-white"
@@ -181,11 +202,11 @@ export default function Hero() {
                 <p className="font-display text-lg font-medium text-[#f0d9b5]">Disponibles 🌸</p>
               </motion.div>
 
-              {/* Burbuja flotante — servicio del video actual */}
+              {/* Burbuja flotante — servicio del slide actual */}
               <AnimatePresence mode="wait">
-                {VIDEOS[current].label && (
+                {slide.label && (
                   <motion.div
-                    key={VIDEOS[current].label}
+                    key={slide.label}
                     initial={{ opacity: 0, y: 10, scale: 0.9 }}
                     animate={{ opacity: 1, y: [0, -8, 0], scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.9 }}
@@ -198,7 +219,7 @@ export default function Hero() {
                   >
                     <p className="eyebrow mb-0.5">Se hizo</p>
                     <p className="font-display text-lg font-medium text-ink whitespace-nowrap">
-                      {VIDEOS[current].label} ✨
+                      {slide.label} ✨
                     </p>
                   </motion.div>
                 )}

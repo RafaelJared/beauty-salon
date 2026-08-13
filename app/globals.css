@@ -114,44 +114,127 @@ body {
 /* ─────────────────────────────────────────
    BUTTON COMPONENTS
 ───────────────────────────────────────── */
-@layer components {
-  .btn-primary {
-    @apply inline-flex items-center gap-2 bg-ink text-white px-[30px] py-4
-           font-body font-medium text-sm tracking-normal
-           rounded-full transition-all duration-300 shadow-strong
-           hover:-translate-y-0.5 hover:shadow-medium
-           active:translate-y-0;
-  }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-ink);
+  color: white;
+  padding: 1rem 30px;
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: normal;
+  border-radius: 9999px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
 
-  .btn-outline {
-    @apply inline-flex items-center gap-2 border border-ink text-ink
-           px-[30px] py-4 font-body text-sm font-medium
-           rounded-full transition-all duration-300
-           hover:bg-ink hover:text-white hover:-translate-y-0.5;
-  }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
+  padding: 1rem 30px;
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.3s;
+  background-color: transparent;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background-color: var(--color-ink);
+  color: white;
+  transform: translateY(-0.125rem);
+}
 
-  .btn-gold {
-    @apply inline-flex items-center gap-2 bg-gold text-white
-           px-[30px] py-4 font-body text-sm font-medium rounded-full
-           transition-all duration-300
-           hover:bg-gold-deep hover:-translate-y-0.5;
-  }
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-gold);
+  color: white;
+  padding: 1rem 30px;
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  background-color: var(--color-gold-deep);
+  transform: translateY(-0.125rem);
+}
 
-  .btn-whatsapp {
-    @apply inline-flex items-center gap-2 bg-[#25D366] text-white
-           px-6 py-3 font-body text-sm font-medium rounded-full
-           transition-all duration-300 shadow-medium
-           hover:bg-[#20b558] hover:-translate-y-0.5 hover:shadow-strong;
-  }
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #25D366;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  border: none;
+  cursor: pointer;
+}
+.btn-whatsapp:hover {
+  background-color: #20b558;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+}
 
-  .card-service {
-    @apply bg-white rounded-[18px] p-[30px] shadow-none border border-line
-           transition-all duration-300
-           hover:shadow-strong hover:-translate-y-2;
-  }
+.card-service {
+  background-color: white;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: none;
+  border: 1px solid var(--color-line);
+  transition: all 0.3s;
+}
+.card-service:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.5rem);
+}
 
+.section-padding {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 640px) {
   .section-padding {
-    @apply px-5 sm:px-8 lg:px-16 xl:px-24;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .section-padding {
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
 }
 
