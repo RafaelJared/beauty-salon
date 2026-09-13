@@ -32,14 +32,14 @@ export default function Hero() {
 
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-bg">
+    <section className="relative min-h-[88vh] lg:min-h-screen flex items-center overflow-hidden bg-bg">
 
       {/* Decorative blobs */}
       <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-rose/20 blur-3xl pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 section-padding w-full pt-28 pb-20">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-12">
+      <div className="relative z-10 section-padding w-full pt-24 pb-12 lg:pt-28 lg:pb-20">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-8 lg:gap-12">
 
           {/* ── Izquierda: Texto (primero en móvil para que el CTA esté arriba) ── */}
           <div className="order-1">
@@ -56,7 +56,7 @@ export default function Hero() {
 
             <motion.h1
               variants={fadeUp} initial="hidden" animate="show" custom={0.25}
-              className="heading-hero text-ink mb-6"
+              className="heading-hero text-ink mb-4 lg:mb-6"
             >
               Tu ritual,{" "}
               <em>tu</em>
@@ -66,7 +66,7 @@ export default function Hero() {
 
             <motion.p
               variants={fadeUp} initial="hidden" animate="show" custom={0.4}
-              className="font-body text-ink-soft text-lg leading-relaxed mb-10 max-w-md"
+              className="font-body text-ink-soft text-base lg:text-lg leading-relaxed mb-6 lg:mb-10 max-w-md"
             >
               Transforma tu imagen en un espacio diseñado para ti. Tintes,
               alisados, cortes y más. Con amor y precisión en cada detalle.
@@ -90,7 +90,7 @@ export default function Hero() {
             {/* Stats */}
             <motion.div
               variants={fadeUp} initial="hidden" animate="show" custom={0.7}
-              className="flex justify-between sm:justify-start gap-4 sm:gap-8 mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-line"
+              className="flex justify-between sm:justify-start gap-4 sm:gap-8 mt-8 sm:mt-14 pt-6 sm:pt-10 border-t border-line"
             >
               {[
                 { value: "10,000+", label: "Clientas felices"    },
@@ -114,7 +114,7 @@ export default function Hero() {
               className="relative"
             >
               {/* Marco del video */}
-              <div className="relative w-64 sm:w-72 h-[480px] sm:h-[540px] rounded-[3rem] overflow-hidden shadow-strong">
+              <div className="relative w-52 sm:w-72 h-[380px] sm:h-[540px] rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden shadow-strong">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={current}

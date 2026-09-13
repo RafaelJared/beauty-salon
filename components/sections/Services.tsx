@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   Scissors, Sparkles, Wind, Waves, Palette, Brush,
-  Highlighter, Droplets, MessageCircle, ChevronRight,
+  Highlighter, Droplets, MessageCircle, ChevronRight, ChevronDown,
 } from "lucide-react";
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50369741855";
@@ -164,15 +164,81 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
   );
 }
 
+// ── Fila desplegable (solo móvil): barra compacta que se abre hacia abajo ──
+function ServiceRow({ service, isOpen, onToggle }: {
+  service: typeof services[0];
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const Icon = service.icon;
+  const waMessage = encodeURIComponent(
+    `Hola! Me gustaría reservar una cita para *${service.name}* 💅`
+  );
+  const waLink = `https://wa.me/${WA_NUMBER}?text=${waMessage}`;
+
+  return (
+    <div className="border border-line/60 rounded-2xl overflow-hidden bg-white">
+      <button
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="w-full flex items-center gap-3 px-4 py-3.5 text-left bg-transparent border-0 cursor-pointer"
+      >
+        <span className={`shrink-0 w-9 h-9 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center`}>
+          <Icon size={16} className="text-gold-deep" />
+        </span>
+        <span className="flex-1 min-w-0">
+          <span className="flex items-center gap-2">
+            <span className="font-display text-base font-medium text-ink truncate">{service.name}</span>
+            {service.popular && (
+              <span className="shrink-0 bg-gold text-white text-[0.5rem] font-body font-medium tracking-widest uppercase px-2 py-0.5 rounded-full leading-none">
+                Popular
+              </span>
+            )}
+          </span>
+          <span className="block font-body text-xs text-gold-deep font-medium mt-0.5">{service.price}</span>
+        </span>
+        <ChevronDown
+          size={18}
+          className={`shrink-0 text-ink-soft transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      <div
+        className="overflow-hidden transition-all duration-400 ease-out"
+        style={{ maxHeight: isOpen ? "340px" : "0px" }}
+      >
+        <div className="px-4 pb-4 pt-0">
+          <p className="font-body text-xs text-gold-deep font-medium mb-1.5">{service.solves}</p>
+          <p className="font-body text-sm text-ink-soft leading-relaxed mb-3">{service.description}</p>
+          <div className="flex items-center justify-between mb-3 pt-3 border-t border-line/60">
+            <span className="font-display text-lg font-semibold text-ink">{service.price}</span>
+            <span className="font-body text-xs text-ink-soft">⏱ {service.duration}</span>
+          </div>
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold justify-center text-xs py-2.5 w-full"
+          >
+            <MessageCircle size={15} />
+            Reservar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Services() {
   const headRef = useRef<HTMLDivElement>(null);
+  const [openId, setOpenId] = useState<number | null>(null);
   const headInView = useInView(headRef, { once: true, margin: "-60px" });
 
   return (
-    <section id="servicios" className="py-24 lg:py-32 bg-bg">
+    <section id="servicios" className="py-16 lg:py-32 bg-bg">
       <div className="section-padding max-w-7xl mx-auto">
 
-        <div ref={headRef} className="text-center mb-16">
+        <div ref={headRef} className="text-center mb-10 lg:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={headInView ? { opacity: 1, y: 0 } : {}}
@@ -204,7 +270,20 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Móvil: lista compacta desplegable (barras hacia abajo) */}
+        <div className="flex flex-col gap-2.5 sm:hidden">
+          {services.map((s) => (
+            <ServiceRow
+              key={s.id}
+              service={s}
+              isOpen={openId === s.id}
+              onToggle={() => setOpenId(openId === s.id ? null : s.id)}
+            />
+          ))}
+        </div>
+
+        {/* Escritorio: tarjetas */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <ServiceCard key={s.id} service={s} index={i} />
           ))}

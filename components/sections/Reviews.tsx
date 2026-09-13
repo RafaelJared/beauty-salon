@@ -119,11 +119,11 @@ export default function Reviews() {
   );
 
   return (
-    <section id="opiniones" className="py-24 lg:py-32 bg-bg-alt">
+    <section id="opiniones" className="py-16 lg:py-32 bg-bg-alt">
       <div className="section-padding max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 lg:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -217,7 +217,7 @@ export default function Reviews() {
 
         {/* Cards rotativas (se pausan al pasar el mouse para poder leer) */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 overflow-hidden"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -230,17 +230,17 @@ export default function Reviews() {
                 animate={{ opacity: 1, y: 0,  scale: 1    }}
                 exit={{    opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="bg-white rounded-3xl p-6 shadow-card border border-line/40 relative overflow-hidden"
+                className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-card border border-line/40 relative overflow-hidden"
               >
-                <Quote size={40} className="absolute top-4 right-4 text-rose/60" />
+                <Quote className="absolute top-3 right-3 sm:top-4 sm:right-4 text-rose/60 w-7 h-7 sm:w-10 sm:h-10" />
 
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-rose flex items-center justify-center flex-shrink-0">
-                    <span className="font-display text-lg font-medium text-white">
+                <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-gold to-rose flex items-center justify-center flex-shrink-0">
+                    <span className="font-display text-base sm:text-lg font-medium text-white">
                       {review.avatar}
                     </span>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-body font-semibold text-ink text-sm">{review.name}</p>
                     <div className="flex items-center gap-1.5 flex-wrap">
                       <p className="font-body text-xs text-ink-soft/70">{review.service}</p>
@@ -255,11 +255,11 @@ export default function Reviews() {
 
                 <StarRating rating={review.rating} />
 
-                <p className="font-body text-sm text-ink-soft leading-relaxed mt-3">
+                <p className="font-body text-[0.82rem] sm:text-sm text-ink-soft leading-relaxed mt-2.5 sm:mt-3">
                   {review.text}
                 </p>
 
-                <p className="font-body text-xs text-ink-soft/50 mt-4">{review.date}</p>
+                <p className="font-body text-xs text-ink-soft/50 mt-3 sm:mt-4">{review.date}</p>
               </motion.div>
             ))}
           </AnimatePresence>

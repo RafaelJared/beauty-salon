@@ -13,7 +13,6 @@ const YEAR      = new Date().getFullYear();
 
 const links = [
   { href: "#servicios", label: "Servicios"    },
-  { href: "#nosotros",  label: "Nosotras"     },
   { href: "#galeria",   label: "Galería"      },
   { href: "#opiniones", label: "Opiniones"    },
   { href: "#reservar",  label: "Agendar Cita" },

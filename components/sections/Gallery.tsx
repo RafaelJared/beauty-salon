@@ -16,7 +16,7 @@ interface IgPost {
   thumbnail_url?: string;
 }
 
-const FALLBACK: IgPost[] = Array.from({ length: 9 }, (_, i) => ({
+const FALLBACK: IgPost[] = Array.from({ length: 3 }, (_, i) => ({
   id:         `placeholder-${i}`,
   media_url:  "",
   permalink:  "#",
@@ -37,7 +37,7 @@ export default function Gallery() {
       .then((data) => {
         const raw = data?.posts ?? [];
         if (raw.length) {
-          const mapped: IgPost[] = raw.slice(0, 9).map((p: any) => ({
+          const mapped: IgPost[] = raw.slice(0, 3).map((p: any) => ({
             id:           p.id,
             media_url:    p.mediaType === "VIDEO" ? p.thumbnailUrl : p.mediaUrl,
             permalink:    p.permalink,
@@ -65,11 +65,11 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="galeria" className="py-24 lg:py-32 bg-bg">
+    <section id="galeria" className="py-16 lg:py-32 bg-bg">
       <div className="section-padding max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 lg:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ export default function Gallery() {
 
         {/* Grid */}
         {!loading && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {posts.map((post, i) => (
               <motion.a
                 key={post.id}
