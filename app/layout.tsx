@@ -51,6 +51,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className="scroll-smooth">
+      <head>
+        <meta
+          name="facebook-domain-verification"
+          content="ytfck2dagvfffveq9z6tcyc61xxi1l"
+        />
+      </head>
+
       <body className="bg-bg font-body antialiased">
         <Navbar />
         <main>{children}</main>
