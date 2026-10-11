@@ -5,15 +5,18 @@ import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 
-const SALON_NAME = process.env.NEXT_PUBLIC_SALON_NAME ?? "AURÉ Beauty Lounge";
+const SALON_NAME =
+  process.env.NEXT_PUBLIC_SALON_NAME ?? "AURÉ Beauty Lounge";
 
 export const metadata: Metadata = {
   title: {
     default: `${SALON_NAME} | Salón de Belleza Premium`,
     template: `%s | ${SALON_NAME}`,
   },
+
   description:
     "Salón de belleza femenino premium. Tintes, alisados, cortes, uñas y más. Reserva tu cita ahora.",
+
   keywords: [
     "salón de belleza",
     "tintes de cabello",
@@ -24,26 +27,38 @@ export const metadata: Metadata = {
     "planchados",
     "ondas",
   ],
+
   openGraph: {
     type: "website",
     locale: "es_SV",
-    url: "https://beauty-salon-bice.vercel.app",
+    url: "https://aurebeautylounge.sivariasv.com/",
     siteName: SALON_NAME,
     title: `${SALON_NAME} | Salón de Belleza Premium`,
     description:
       "Salón de belleza femenino premium. Tintes, alisados, cortes, uñas y más.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: `${SALON_NAME} | Salón de Belleza Premium`,
     description: "Salón de belleza femenino premium.",
   },
+
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://beauty-salon-bice.vercel.app"),
+
+  metadataBase: new URL(
+    "https://aurebeautylounge.sivariasv.com"
+  ),
 };
 
 export default function RootLayout({
@@ -54,15 +69,19 @@ export default function RootLayout({
       <head>
         <meta
           name="facebook-domain-verification"
-          content="ytfck2dagvfffveq9z6tcyc61xxi1l"
+          content="sfrdtbn74yupbejx9a7rogndv41h1i"
         />
       </head>
 
       <body className="bg-bg font-body antialiased">
         <Navbar />
+
         <main>{children}</main>
+
         <Footer />
+
         <WhatsAppFloat />
+
         <Toaster
           position="bottom-center"
           toastOptions={{
@@ -76,7 +95,13 @@ export default function RootLayout({
               padding: "12px 20px",
               boxShadow: "0 8px 40px rgba(52,42,32,0.15)",
             },
-            success: { iconTheme: { primary: "#b08d57", secondary: "#fff" } },
+
+            success: {
+              iconTheme: {
+                primary: "#b08d57",
+                secondary: "#fff",
+              },
+            },
           }}
         />
       </body>
