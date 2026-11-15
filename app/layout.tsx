@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const SALON_NAME =
   process.env.NEXT_PUBLIC_SALON_NAME ?? "AURÉ Beauty Lounge";
@@ -104,6 +105,8 @@ export default function RootLayout({
             },
           }}
         />
+
+        <Analytics />
       </body>
     </html>
   );
